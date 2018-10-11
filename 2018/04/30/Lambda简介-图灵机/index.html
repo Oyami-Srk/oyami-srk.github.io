@@ -5,19 +5,20 @@
   
 
   
-  <title>空白酱的蒟蒻心得</title>
+  <title>Lambda简介-图灵机 | 空白酱的蒟蒻心得</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~">
+  <meta name="description" content="Lambda初级简介 - 图灵机 ​    图灵在1936年发表的论文— 《论可计算数及其在判定问题上的应用》堪称是20世纪最伟大几篇论文之一。众所周知，图灵机作为人类迄今为止发明的可以被实现的最强大的计算模型，在数学、计算机科学、哲学、物理学等多种学科中具有十分重要的地位。可以说是人类对计算认知的基石（超计算模型普遍以神谕机为原型— 一种特殊的图灵机）。理解图灵机及其重要意义是理解现代计算机的基">
 <meta name="keywords" content="shiroko 空白 博客 blog oyami koroto 技术 算法">
-<meta property="og:type" content="website">
-<meta property="og:title" content="空白酱的蒟蒻心得">
-<meta property="og:url" content="https://oyami-srk.github.io/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lambda简介-图灵机">
+<meta property="og:url" content="https://oyami-srk.github.io/2018/04/30/Lambda简介-图灵机/index.html">
 <meta property="og:site_name" content="空白酱的蒟蒻心得">
-<meta property="og:description" content="一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~">
+<meta property="og:description" content="Lambda初级简介 - 图灵机 ​    图灵在1936年发表的论文— 《论可计算数及其在判定问题上的应用》堪称是20世纪最伟大几篇论文之一。众所周知，图灵机作为人类迄今为止发明的可以被实现的最强大的计算模型，在数学、计算机科学、哲学、物理学等多种学科中具有十分重要的地位。可以说是人类对计算认知的基石（超计算模型普遍以神谕机为原型— 一种特殊的图灵机）。理解图灵机及其重要意义是理解现代计算机的基">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-11T10:26:38.462Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="空白酱的蒟蒻心得">
-<meta name="twitter:description" content="一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~">
+<meta name="twitter:title" content="Lambda简介-图灵机">
+<meta name="twitter:description" content="Lambda初级简介 - 图灵机 ​    图灵在1936年发表的论文— 《论可计算数及其在判定问题上的应用》堪称是20世纪最伟大几篇论文之一。众所周知，图灵机作为人类迄今为止发明的可以被实现的最强大的计算模型，在数学、计算机科学、哲学、物理学等多种学科中具有十分重要的地位。可以说是人类对计算认知的基石（超计算模型普遍以神谕机为原型— 一种特殊的图灵机）。理解图灵机及其重要意义是理解现代计算机的基">
   
     <link rel="alternate" href="/atom.xml" title="空白酱的蒟蒻心得" type="application/atom+xml">
   
@@ -68,54 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/09/hello-world/" class="article-date">
-  <time datetime="2018-10-08T17:04:46.874Z" itemprop="datePublished">2018-10-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/09/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://oyami-srk.github.io/2018/10/09/hello-world/" data-id="cjn4fvg7l0001q0fb1ljt5ko3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Lambda简介-图灵机" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Lambda简介-图灵机" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/30/Lambda简介-图灵机/" class="article-date">
   <time datetime="2018-04-30T15:36:11.000Z" itemprop="datePublished">2018-04-30</time>
@@ -128,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/30/Lambda简介-图灵机/">Lambda简介-图灵机</a>
+    <h1 class="article-title" itemprop="name">
+      Lambda简介-图灵机
     </h1>
   
 
@@ -170,11 +124,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/09/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
-
+</article>
 
 </section>
         
