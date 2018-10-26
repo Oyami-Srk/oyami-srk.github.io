@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Nokia N900折腾笔记[1]-刷入系统 | 空白酱的蒟蒻心得</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一直想买一个Linux的掌上全键盘终端而且资金有限. 某宝上正好有Nokia N900, 了解其系统Maemo是基于Debian的之后, 我动心了… 遂剁手得之. 但卖家很明显懒得刷机(Maemo没有格机这一个功能), 所以机器到手后里面全是前使用者的个人信息, 银行卡号, 姓名, 电话号, 家里的车型号, 前用户是广东人, 今年38岁等等等等. 很乱, 于是得重新刷机…… 碍于机器停产和Nok">
+<meta name="keywords" content="折腾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nokia N900折腾笔记[1]-刷入系统">
+<meta property="og:url" content="https://oyami-srk.github.io/2017/02/09/Nokia-N900折腾笔记[1]-刷入系统/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="一直想买一个Linux的掌上全键盘终端而且资金有限. 某宝上正好有Nokia N900, 了解其系统Maemo是基于Debian的之后, 我动心了… 遂剁手得之. 但卖家很明显懒得刷机(Maemo没有格机这一个功能), 所以机器到手后里面全是前使用者的个人信息, 银行卡号, 姓名, 电话号, 家里的车型号, 前用户是广东人, 今年38岁等等等等. 很乱, 于是得重新刷机…… 碍于机器停产和Nok">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405611611699.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405611883785.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405612012905.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405612090288.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405612227536.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405612361217.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405612499589.png">
+<meta property="og:updated_time" content="2018-10-26T13:41:19.566Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nokia N900折腾笔记[1]-刷入系统">
+<meta name="twitter:description" content="一直想买一个Linux的掌上全键盘终端而且资金有限. 某宝上正好有Nokia N900, 了解其系统Maemo是基于Debian的之后, 我动心了… 遂剁手得之. 但卖家很明显懒得刷机(Maemo没有格机这一个功能), 所以机器到手后里面全是前使用者的个人信息, 银行卡号, 姓名, 电话号, 家里的车型号, 前用户是广东人, 今年38岁等等等等. 很乱, 于是得重新刷机…… 碍于机器停产和Nok">
+<meta name="twitter:image" content="https://oyami-srk.github.io/images/15405611611699.png">
+  
+    <link rel="alternate" href="/atom.xml" title="空白酱的蒟蒻心得" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">空白酱的蒟蒻心得</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">在辣鸡的领域摸爬滚打</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://oyami-srk.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Nokia-N900折腾笔记[1]-刷入系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/09/Nokia-N900折腾笔记[1]-刷入系统/" class="article-date">
+  <time datetime="2017-02-09T14:38:00.000Z" itemprop="datePublished">2017-02-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Nokia N900折腾笔记[1]-刷入系统
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>一直想买一个Linux的掌上全键盘终端而且资金有限. 某宝上正好有Nokia N900, 了解其系统Maemo是基于Debian的之后, 我动心了… 遂剁手得之.</p>
+<p>但卖家很明显懒得刷机(Maemo没有格机这一个功能), 所以机器到手后里面全是前使用者的个人信息, 银行卡号, 姓名, 电话号, 家里的车型号, 前用户是广东人, 今年38岁等等等等. 很乱, 于是得重新刷机……</p>
+<p>碍于机器停产和Nokia的消极政策, 目前官方的源已经死掉了, 还有官方的维护地址, 于是去<a href="http://bbs.dospy.com/forum-315-1.html" title="Dospy" target="_blank" rel="noopener">Dospy</a>爬贴. 发现DNE是个好东西. 但是其2010的EMMC已经失效, 于是我再次爬贴, 发现一篇帖子的回复里连接了一个有效的刷机包的链接, 遂下载.</p>
+<p>差点被坑. 一般来说都是<strong>先刷EMMC后刷ROM</strong>, 但是那个包里面的<strong>1.bin是ROM</strong>, <strong>2.bin是EMMC</strong>………打开一看便知道.<br>于是, 开始刷机.</p>
+<hr>
+<p><img src="/images/15405611611699.png" alt=""></p>
+<ul>
+<li>刷机环境: Thinkpad X61 Windows XP SP3<blockquote>
+<p>(本文所提到的任何资源均重新打包并上传到<a href="https://pan.baidu.com/s/1jHS0jfK#gau6" title="#后面是提取码" target="_blank" rel="noopener">百度云</a>和<a href="https://mega.nz/#!StEBHLwB!ysB3W-AFpFOjXqrWc9Co2U_QzLn1FNln_109MUcVfjE" title="点我下载呀" target="_blank" rel="noopener">MEGA</a>)<br>话说原本我的X61上是Arch…为了折腾N900特地安装了XP. </p>
+</blockquote>
+</li>
+</ul>
+<h4 id="1-首先-安装libusb-win32-这是Flasher必备的依赖"><a href="#1-首先-安装libusb-win32-这是Flasher必备的依赖" class="headerlink" title="1. 首先, 安装libusb-win32, 这是Flasher必备的依赖."></a>1. 首先, 安装<a href="https://sourceforge.net/projects/libusb-win32/" title="libusb-win32" target="_blank" rel="noopener">libusb-win32</a>, 这是<a href="http://pan.baidu.com/s/1ntqNr7N" title="Flasher" target="_blank" rel="noopener">Flasher</a>必备的依赖.</h4><h4 id="2-然后-准备好rom和emmc并重命名方便操作"><a href="#2-然后-准备好rom和emmc并重命名方便操作" class="headerlink" title="2. 然后, 准备好rom和emmc并重命名方便操作."></a>2. 然后, 准备好rom和emmc并重命名方便操作.</h4><h4 id="3-安装Flasher"><a href="#3-安装Flasher" class="headerlink" title="3. 安装Flasher."></a>3. 安装Flasher.</h4><h4 id="4-将Flasher的安装目录加入环境变量并测试Flasher-3-5-exe能否在cmd下运行"><a href="#4-将Flasher的安装目录加入环境变量并测试Flasher-3-5-exe能否在cmd下运行" class="headerlink" title="4. 将Flasher的安装目录加入环境变量并测试Flasher-3.5.exe能否在cmd下运行."></a>4. 将Flasher的安装目录加入环境变量并测试Flasher-3.5.exe能否在cmd下运行.</h4><p><img src="/images/15405611883785.png" alt=""></p>
+<h4 id="5-将N900关机-按住U键并插入数据线-直到N900屏幕右上角显示一个很小的USB图标-松开U-此时电脑端应该反复右下角刷弹窗-等他搜完"><a href="#5-将N900关机-按住U键并插入数据线-直到N900屏幕右上角显示一个很小的USB图标-松开U-此时电脑端应该反复右下角刷弹窗-等他搜完" class="headerlink" title="5. 将N900关机, 按住U键并插入数据线, 直到N900屏幕右上角显示一个很小的USB图标, 松开U. 此时电脑端应该反复右下角刷弹窗, 等他搜完."></a>5. 将N900关机, 按住U键并插入数据线, 直到N900屏幕右上角显示一个很小的USB图标, 松开U. 此时电脑端应该反复右下角刷弹窗, 等他搜完.</h4><p><img src="/images/15405612012905.png" alt=""><br><img src="/images/15405612090288.png" alt=""></p>
+<h4 id="6-输入指令-flasher-3-5-F-“emmc目录”-f-R"><a href="#6-输入指令-flasher-3-5-F-“emmc目录”-f-R" class="headerlink" title="6. 输入指令:flasher-3.5 -F “emmc目录” -f -R"></a>6. 输入指令:flasher-3.5 -F “emmc目录” -f -R</h4><p><img src="/images/15405612227536.png" alt=""><br><img src="/images/15405612361217.png" alt=""></p>
+<h4 id="7-静候自动重启"><a href="#7-静候自动重启" class="headerlink" title="7. 静候自动重启"></a>7. 静候自动重启</h4><h4 id="8-然后重复第五个步骤-进入Update模式并参考第六个步骤刷入ROM文件-成功之后如图"><a href="#8-然后重复第五个步骤-进入Update模式并参考第六个步骤刷入ROM文件-成功之后如图" class="headerlink" title="8. 然后重复第五个步骤, 进入Update模式并参考第六个步骤刷入ROM文件. 成功之后如图:"></a>8. 然后重复第五个步骤, 进入Update模式并参考第六个步骤刷入ROM文件. 成功之后如图:</h4><p><img src="/images/15405612499589.png" alt=""></p>
+<h4 id="9-重启后便大功告成啦"><a href="#9-重启后便大功告成啦" class="headerlink" title="9. 重启后便大功告成啦!!"></a>9. 重启后便大功告成啦!!</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://oyami-srk.github.io/2017/02/09/Nokia-N900折腾笔记[1]-刷入系统/" data-id="cjno4zxxg000q5jfb1p2h576l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/折腾/">折腾</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/06/利用Win32API实现小林op的康娜动画效果~(复原Maid-Dragon效果)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          利用Win32API实现小林op的康娜动画效果~(复原Maid Dragon效果)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/07/DSB协议v2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DSB协议v2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DirectX学习笔记/">DirectX学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小型项目/">小型项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数理逻辑/">数理逻辑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认分类/">默认分类</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DirectX/">DirectX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息学/">信息学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图形学/">图形学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/折腾/">折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数理逻辑/">数理逻辑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂文/">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评测/">评测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通知/">通知</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DirectX/" style="font-size: 14px;">DirectX</a> <a href="/tags/信息学/" style="font-size: 16px;">信息学</a> <a href="/tags/图形学/" style="font-size: 14px;">图形学</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/折腾/" style="font-size: 12px;">折腾</a> <a href="/tags/数理逻辑/" style="font-size: 16px;">数理逻辑</a> <a href="/tags/杂文/" style="font-size: 18px;">杂文</a> <a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/通知/" style="font-size: 20px;">通知</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/21/关于博客暂时停机的声明/">关于博客暂时停机的声明</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/16/Lambda初级简介---组合子演算/">Lambda初级简介 - 组合子演算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/14/Lambda初级简介---Y组合子/">Lambda初级简介 - Y组合子</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/12/Lambda初级简介---逻辑运算/">Lambda初级简介 - 逻辑运算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/10/Lambda初级简介---邱奇数/">Lambda初级简介 - 邱奇数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Shiroko<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

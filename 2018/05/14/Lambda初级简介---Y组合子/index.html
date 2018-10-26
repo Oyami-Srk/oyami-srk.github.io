@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Lambda初级简介 - Y组合子 | 空白酱的蒟蒻心得</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="子又生孙，孙又生子，子子孙孙无穷匮也。">
+<meta name="keywords" content="数理逻辑,信息学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lambda初级简介 - Y组合子">
+<meta property="og:url" content="https://oyami-srk.github.io/2018/05/14/Lambda初级简介---Y组合子/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="子又生孙，孙又生子，子子孙孙无穷匮也。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-26T13:38:21.840Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lambda初级简介 - Y组合子">
+<meta name="twitter:description" content="子又生孙，孙又生子，子子孙孙无穷匮也。">
+  
+    <link rel="alternate" href="/atom.xml" title="空白酱的蒟蒻心得" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">空白酱的蒟蒻心得</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">在辣鸡的领域摸爬滚打</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://oyami-srk.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Lambda初级简介---Y组合子" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/14/Lambda初级简介---Y组合子/" class="article-date">
+  <time datetime="2018-05-14T14:24:00.000Z" itemprop="datePublished">2018-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数理逻辑/">数理逻辑</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Lambda初级简介 - Y组合子
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>子又生孙，孙又生子，子子孙孙无穷匮也。</p>
+<a id="more"></a>
+<blockquote>
+<p>不用函数名，就能实现递归吗？</p>
+</blockquote>
+<p>​    上篇我们成功构建了最基本的运算系统，可以编写特定算法了。可是，正当我们试图用最基本的递归实现阶乘的时候，我们发现，似乎λ演算里并不支持我们熟悉的，基于有名函数的递归。先前也已经说过，函数名只是一个小把戏，并不是λ演算所必须的。那么，如果没有函数名，递归还能被实现吗？</p>
+<p>​    答案当然是肯定的，λ演算若连递归都无法实现，那么要它何用(笑)。</p>
+<p>​    仔细想一想，如果我有一个函数，这个函数接受自己作为参数，然后执行参数传入参数，就可以实现最简单的递归。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(λx.x x)(λx.x x)</span><br></pre></td></tr></table></figure>
+<p>​    显而易见，如果将其展开，结果就是<code>(λx.x x)</code>被调用了无限次。不过，此处的x不过是用来递归的函数，是整个递归的主心骨，但是我们递归是要有目的的，是要有一个函数传递进去随着x的调用被调用的。应该怎么做呢？很简单，就如上文所述，假定我们的递归元函数（递归的中心部分）利用接受一个自身作为函数来进行递归的话，那么x x则返回(λx.x x)，所以很简单，我们只要将x x作为参数传入我们的函数，在我们的函数里调用这个参数，我们就能实现递归了。所以，新的函数定义为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">λf.(λx.f(x x))(λx.f(x x))</span><br></pre></td></tr></table></figure>
+<p>​    这就是大名鼎鼎的Y组合子！上述文字通过定义的方法解释了Y组合子的由来，下面我来详细介绍一下这个由Haskell B. Curry发明的Y组合子。Y组合子是λ演算里最著名的不动点组合子；不动点组合子，是用来计算其他函数的不动点的高阶函数(接受一个或多个函数，返回一个函数的函数)。不动点，就是一个函数里传入参数等于返回参数的参数。举个例子，函数f=x^2的不动点就是0和1，因为f(0)=0，f(1)=1。一阶函数的不动点为一阶值，那么高阶函数的不动点自然是高阶值，也就是函数。所以，综上所述，Y组合子的作用应该是g = Y(g)，并不断展开Y内的参数g，以实现递归展开g的效果。下面就来亲自试一试吧！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Y := λf.(λx.f(x x))(λx.f(x x))</span><br><span class="line">Y g</span><br><span class="line">(λf.(λx.f(x x))(λx.f(x x))) g	# 代换Y的定义</span><br><span class="line">(λx.g(x x))(λx.g(x x))			# 应用β-归约</span><br><span class="line">g((λx.g(x x))(λx.g(x x)))		# 应用β-归约</span><br><span class="line">g(Y g)							# 代换Y g</span><br><span class="line">g(g(Y g)) = g(g(g(Y g)))		# 永远...</span><br></pre></td></tr></table></figure>
+<p>​    就是这样。那么下面来看看阶乘的实现吧！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">FACT := λn.IF (ISZERO n) 1 (mul n (FACT (pre n)))	# 我们上次写的阶乘函数</span><br><span class="line">FACT := λf.λn.IF (ISZERO n) 1 (mul n (f (pre n)))	# 根据需要改成使用Y组合子的模式</span><br><span class="line"># 对于FACT, 下面的展开过程将不会处理其中的过程, 直接返回结果.</span><br><span class="line"># Let&apos;s rock and roll!</span><br><span class="line">g := FACT	# 简化一些</span><br><span class="line">g(Y g)3</span><br><span class="line">IF (ISZERO 3) 1 (mul 3 ((Y g) (pre 3))))		# 代换并应用</span><br><span class="line">3 * (g(Y g)2)									# Y g展开为g(Y g), pre 5代换结果为4</span><br><span class="line">3 * (IF (ISZERO 2) 1 (mul 2 ((Y g) (pre 2)))))	# 同理</span><br><span class="line">3 * (2 * (g(Y g)1))</span><br><span class="line">3 * (2 * (IF (ISZERO 1) 1 (mul 1 ((Y g) (pre 1))))))</span><br><span class="line">3 * (2 * (1 * (g(Y g)0)))</span><br><span class="line">3 * (2 * (1 * (IF (ISZERO 0) 1 (mul 0 ((Y g) (pre 0)))))))</span><br><span class="line">3 * (2 * (1 * (1))) = 3 * 2 * 1 = 3!			# 最终结果符合定义!</span><br></pre></td></tr></table></figure>
+<p>​    完美！</p>
+<p>​    现在，回想我们在邱奇数那章曾经使用的JavaScript，现在让我们用JavaScript实现个Y组合子！</p>
+<p>​    处于方便考虑，我们不使用邱奇数和邱奇布尔，直接用JavaScript内置的更加方便我们感受Y组合子和接下来的一切。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FACT = <span class="function"><span class="params">f</span> =&gt;</span> n =&gt; n &lt; <span class="number">2</span> ? <span class="number">1</span> : n * f(n - <span class="number">1</span>);</span><br><span class="line">Y = <span class="function"><span class="params">f</span> =&gt;</span> (<span class="function"><span class="params">x</span> =&gt;</span> f(x(x)))(<span class="function"><span class="params">x</span> =&gt;</span> f(x(x)));</span><br><span class="line">FACT(Y(FACT))(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>​    然后我们高兴的打开console，输入这些代码，敲下了回车。结果却报错“Maximum stack size exceeded”。这是因为什么呢？难道我们写错了吗？并不是，这个原因其实很简单。我们知道，在处理λ表达式的时候，我们是直接用整个函数体去当做参数去应用到其他函数里面去，比如说我们把Y g展开成g(Y g)，这其中就是直接把g的函数定义代入Y函数内，这种传值方式叫做传名策略，他不要求参数表达式一定要被计算出来，仅仅将参数表达式直接代入即可。而JavaScript这种传统的机器编程语言，他的传值方式是传值策略，就是一定要把参数表达式计算出来的一种传值方式。这样，我们在λ演算里可以毫无压力地展开g，代入参数(Y g)和3，然后求出3*(g(Y g))来，逐次类推。而在JavaScript里，必须求值。那么FACT(Y(FACT))(3)则必须先把Y(FACT)进行求值，而显然这会陷入无穷递归，直到爆栈……</p>
+<p>​    那么怎么办呢？当然，伟大的先辈们已经给我们想好了主意，Y组合子还有一种挺有名的变体，名字叫Z组合子，她就是用来专门处理传值调用的问题的。在介绍Z组合子之前，我们先来看一条归约。可能你会说，归约不就是两条吗？没错，基础归约的确只有两条，但是我们接下来要介绍的η-变换是对归约的一种补充。</p>
+<p>​    η-变换是外延性的表达，通过集合论的外延公理，两集合相等当且仅当其包含相同元素，这条定义，我们就很好理解在函数里的外延性指的是，两函数相等当且仅当其对公共函数域内所有变量的映射相等。也就是说如果f(x) = g(x)，那么f=g。所以，η-变换的定义是，两个函数对于所有参数结果一致，则两函数相等或同一函数。用λ表达式来表达，就是：λx.f x和f等价，当x不在f中自由出现时。</p>
+<p>​    所以，如果要让Y组合子内的f接受一个参数，毫无疑问应该在x x外侧嵌套一个接受v的函数。他会将参数展开到下阶段表达式的右侧，从而令f接受这个参数而不用使用传名策略，同时这个嵌套的函数根据η-变换也是等价于原表达式的。Z组合子的定义是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Z := λf.(λx.f(λv.(x x)v))(λx.f(λv.(x x)v))</span><br></pre></td></tr></table></figure>
+<p>​    由于v的存在，所以求值必须引入参数，在非传名策略以及非不严格类型的情况下也不会发散。让我们在JavaScript里实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FACT = <span class="function"><span class="params">f</span> =&gt;</span> n =&gt; n &lt; <span class="number">2</span> ? <span class="number">1</span> : n * f(n - <span class="number">1</span>);</span><br><span class="line">Z = <span class="function"><span class="params">f</span> =&gt;</span> (<span class="function"><span class="params">x</span> =&gt;</span> f(<span class="function"><span class="params">v</span> =&gt;</span> (x(x))(v)))(<span class="function"><span class="params">x</span> =&gt;</span> f(<span class="function"><span class="params">v</span> =&gt;</span> (x(x))(v)));</span><br><span class="line">Z(FACT)(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>​    运行完美！</p>
+<p>​    你可能在想，既然存在Y组合子、Z组合子，那么就一定存在其他高阶函数，也就是组合子。没错，λ演算的魅力还远远不止这些。请看下回揭晓。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://oyami-srk.github.io/2018/05/14/Lambda初级简介---Y组合子/" data-id="cjno4zxx9000c5jfbdnon22gk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息学/">信息学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数理逻辑/">数理逻辑</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/16/Lambda初级简介---组合子演算/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lambda初级简介 - 组合子演算
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/12/Lambda初级简介---逻辑运算/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lambda初级简介 - 逻辑运算</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DirectX学习笔记/">DirectX学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小型项目/">小型项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数理逻辑/">数理逻辑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认分类/">默认分类</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DirectX/">DirectX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息学/">信息学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图形学/">图形学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/折腾/">折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数理逻辑/">数理逻辑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂文/">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评测/">评测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通知/">通知</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DirectX/" style="font-size: 14px;">DirectX</a> <a href="/tags/信息学/" style="font-size: 16px;">信息学</a> <a href="/tags/图形学/" style="font-size: 14px;">图形学</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/折腾/" style="font-size: 12px;">折腾</a> <a href="/tags/数理逻辑/" style="font-size: 16px;">数理逻辑</a> <a href="/tags/杂文/" style="font-size: 18px;">杂文</a> <a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/通知/" style="font-size: 20px;">通知</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/21/关于博客暂时停机的声明/">关于博客暂时停机的声明</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/16/Lambda初级简介---组合子演算/">Lambda初级简介 - 组合子演算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/14/Lambda初级简介---Y组合子/">Lambda初级简介 - Y组合子</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/12/Lambda初级简介---逻辑运算/">Lambda初级简介 - 逻辑运算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/10/Lambda初级简介---邱奇数/">Lambda初级简介 - 邱奇数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Shiroko<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

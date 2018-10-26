@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>DirectX11学习笔记 - 2 | 空白酱的蒟蒻心得</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DirectX11学习笔记-2Author: OyaKti(SRK)Date: 2016/7/3-4 DirectX开发环境的搭建,第一个DirectX程序以及框架封装">
+<meta name="keywords" content="编程,DirectX,图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DirectX11学习笔记 - 2">
+<meta property="og:url" content="https://oyami-srk.github.io/2016/07/05/DirectX11学习笔记-2/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="DirectX11学习笔记-2Author: OyaKti(SRK)Date: 2016/7/3-4 DirectX开发环境的搭建,第一个DirectX程序以及框架封装">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405614293073.jpg">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405634501517.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405634611793.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405634761737.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405634915841.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405635095241.png">
+<meta property="og:updated_time" content="2018-10-26T14:22:22.298Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DirectX11学习笔记 - 2">
+<meta name="twitter:description" content="DirectX11学习笔记-2Author: OyaKti(SRK)Date: 2016/7/3-4 DirectX开发环境的搭建,第一个DirectX程序以及框架封装">
+<meta name="twitter:image" content="https://oyami-srk.github.io/images/15405614293073.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="空白酱的蒟蒻心得" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">空白酱的蒟蒻心得</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">在辣鸡的领域摸爬滚打</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://oyami-srk.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DirectX11学习笔记-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/05/DirectX11学习笔记-2/" class="article-date">
+  <time datetime="2016-07-04T17:54:00.000Z" itemprop="datePublished">2016-07-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DirectX学习笔记/">DirectX学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DirectX11学习笔记 - 2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DirectX11学习笔记-2"><a href="#DirectX11学习笔记-2" class="headerlink" title="DirectX11学习笔记-2"></a>DirectX<em>11</em>学习笔记-2</h1><p>Author: <a href="http://blog.qvq.moe/" title="OyaKti的弱鸡心得" target="_blank" rel="noopener"><em>OyaKti(SRK)</em></a><br>Date: 2016/7/3-4<br><img src="/images/15405614293073.jpg" alt=""></p>
+<h2 id="DirectX开发环境的搭建-第一个DirectX程序以及框架封装"><a href="#DirectX开发环境的搭建-第一个DirectX程序以及框架封装" class="headerlink" title="DirectX开发环境的搭建,第一个DirectX程序以及框架封装"></a>DirectX开发环境的搭建,第一个DirectX程序以及框架封装</h2><hr>
+<a id="more"></a>
+<p><span id="home"></span></p>
+<p><a href="#1">1.Visual Studio搭建</a><br><a href="#2">2.DirectX开发环境搭建</a><br><a href="#3">3.第一个DirectX程序</a><br>    <a href="#3-1">3-1.格式附录</a><br><a href="#4">4.封装DirectX框架</a><br>    <a href="#4-1">4-1.框架结构</a><br>    <a href="#4-2">4-2.框架实现</a><br><a href="#5">5.工程文件下载</a></p>
+<ul>
+<li><h2 id="Visual-Studio-2015开发环境搭建"><a href="#Visual-Studio-2015开发环境搭建" class="headerlink" title="Visual Studio 2015开发环境搭建"></a><span id="1">Visual Studio 2015开发环境搭建</span></h2><p>  本文基于<a href="https://zh.wikipedia.org/wiki/Microsoft_Visual_Studio#Visual_Studio_2015" target="_blank" rel="noopener"><strong>Vusial Studio 2015</strong></a>(下文简称Vs2015)进行开发,但Dx开发环境并非仅Vs2015,使用Vs2015对于新手是不合适的,推荐新手使用<a href="https://zh.wikipedia.org/wiki/Microsoft_Visual_Studio#Visual_Studio_2013" target="_blank" rel="noopener"><strong>Visual Studio 2013</strong></a>进行开发学习.<br>  Vs2015的安装过程不加以过多阐述,组件选择必须勾选Visual C++以及Windows SDK.<br><img src="/images/15405634501517.png" alt=""><br><img src="/images/15405634611793.png" alt=""></p>
+<p>  安装完成后可适当安装插件进行辅助开发,诸如VSColorOutput,VAX等.</p>
+<p>  <a href="#home">返回目录</a></p>
+</li>
+<li><h2 id="DirectX开发环境搭建"><a href="#DirectX开发环境搭建" class="headerlink" title="DirectX开发环境搭建"></a><span id="2">DirectX开发环境搭建</span></h2><p>  下载<a href="http://download.microsoft.com/download/A/E/7/AE743F1F-632B-4809-87A9-AA1BB3458E31/DXSDK_Jun10.exe" target="_blank" rel="noopener">DXSDK_June11</a>并安装,安装项默认即可.若出现安装警告S1023,无视即可.定位到安装目录,检查是否存在Include和Lib文件.</p>
+<p>  <a href="#home">返回目录</a></p>
+</li>
+<li><h2 id="第一个DirectX程序"><a href="#第一个DirectX程序" class="headerlink" title="第一个DirectX程序"></a><span id="3">第一个DirectX程序</span></h2><p>  使用Vs2015建立一个新的Visual C++ 空项目工程<br>  <img src="/images/15405634761737.png" alt=""></p>
+<p>  添加一个main.cpp文件.<br>  在使用DirectX之前,我们需要有一个空窗体来进行渲染.所以我们先利用Windows Api创建一个新窗体.Win32窗体程序的入口点是WinMain函数,其定义如下:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE prevInstance, LPWSTR cmdLine, int cmdShow)&#123;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  虽说入口点是WinMain函数,但是我们却使用了wWinMain函数,这是因为wWinMain中的第一个w代表宽字符,也就是Unicode,使用wWinMain则可以正确处理传入的Unicode参数而不受WinMain的ANSI限制的制约.<br>  入口点的四个参数定义如下:<br>  hInstance: 应用程序当前实例的句柄.<br>  prevInstance: 应用程序前一个实例的句柄.<br>  cmdLind: 使用命令行传入的参数.<br>  cmdShow: 窗口的模式ID号码,例如最大化最小化或正常等.<br>  认识了入口函数,接下来就要进行窗口的初始化,受篇幅限制,我不对初始化代码进行过多的描述,若想了解更多有关Windows Api编程的细节,请参阅其他资料或书籍.<br>  以下是窗口初始化的代码:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE prevInstance, LPWSTR cmdLine, int cmdShow) &#123;</span><br><span class="line">    WNDCLASSEX wndClass = &#123; 0 &#125;;  </span><br><span class="line">    wndClass.cbSize = sizeof(WNDCLASSEX);   //结构体大小</span><br><span class="line">    wndClass.style = CS_HREDRAW | CS_VREDRAW;  //窗口外观</span><br><span class="line">    wndClass.lpfnWndProc = WndProc;     //回调函数</span><br><span class="line">    wndClass.hInstance = hInstance;     //当前实例句柄</span><br><span class="line">    wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);    //指针</span><br><span class="line">    wndClass.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);    //背景笔刷句柄</span><br><span class="line">    wndClass.lpszMenuName = NULL;  //菜单,不需要</span><br><span class="line">    wndClass.lpszClassName = &quot;Window&quot;;  //窗口类名</span><br><span class="line">    if (!RegisterClassEx(&amp;wndClass)) //注册并检查是否正确注册窗口类  </span><br><span class="line">    		return -1;</span><br><span class="line">    RECT rc = &#123; 0, 0, 640, 480 &#125;;  //窗口大小</span><br><span class="line">    AdjustWindowRect(&amp;rc, WS_OVERLAPPEDWINDOW, false);  //计算窗口实际尺寸</span><br><span class="line">    HWND hwnd = CreateWindow(   //创建一个窗口</span><br><span class="line">        &quot;Window&quot;, //窗口类名,与WNDCLASSEX中设置相同</span><br><span class="line">        &quot;Test&quot;, //窗口标题栏</span><br><span class="line">        WS_OVERLAPPEDWINDOW, //窗口风格</span><br><span class="line">        0, 0, //窗口位置</span><br><span class="line">        rc.right - rc.left, //窗口宽度</span><br><span class="line">        rc.bottom - rc.top, //窗口高度</span><br><span class="line">        NULL, NULL, //窗口父句柄和菜单句柄</span><br><span class="line">        hInstance, //窗口实例</span><br><span class="line">        NULL//窗口过程处理数据</span><br><span class="line">    );  </span><br><span class="line">    if (!hwnd) return -1;   //判断是否成功创建</span><br><span class="line">    ShowWindow(hwnd, cmdShow);  //显示窗口</span><br><span class="line">    //下略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  这段代码初始化了一个窗口类(WNDCLASSEX)并且用RegisterClassEx注册了他,WNDCLASSEX的定义在微软的<a href="https://technet.microsoft.com/zh-cn/library/ms633577.aspx" target="_blank" rel="noopener">官方API手册</a>里有写,这里不过多阐述了.代码的解释已经在注释中对大多数语句进行了说明,如需获得更详细的解释请参阅Windows API手册或其他书籍资料等.<br>  创建完窗体,我们就要开始程序的主循环了,在任何Win32程序里,都必定会有主循环的参与,主循环是我们处理事务的地方,也是最主要的地方.我们接下来的任何操作,都是发生在主循环里的.下面就是主循环的程序代码:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line"></span><br><span class="line">int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE prevInstance, LPWSTR cmdLine, int cmdShow) &#123;</span><br><span class="line">    //上略</span><br><span class="line">    MSG msg = &#123; 0 &#125;;    </span><br><span class="line">    while (msg.message != WM_QUIT) &#123;//判断窗体是否接收到退出消息</span><br><span class="line">        if (PeekMessage(&amp;msg, 0, 0, 0, PM_REMOVE)) &#123;   //获取消息</span><br><span class="line">            TranslateMessage(&amp;msg);//翻译消息</span><br><span class="line">   DispatchMessage(&amp;msg);//将消息传送给窗口过程处理</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">            //主循环处理,渲染更新检查操作等</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">return static_cast&lt;int&gt;(msg.wParam);//强制转换后返回</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  这下wWinMain中所有的代码已经齐全了,但是编译还是不能够通过,对,我们还少一个窗口过程,处理消息的一个函数.下面是窗口过程WndProc的代码:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) &#123;</span><br><span class="line">    PAINTSTRUCT ps;</span><br><span class="line"> HDC hDC;</span><br><span class="line"> switch (msg) &#123;</span><br><span class="line"> case WM_PAINT://绘图事件</span><br><span class="line">        hDC = BeginPaint(hWnd, &amp;ps);</span><br><span class="line">  EndPaint(hWnd, &amp;ps);</span><br><span class="line">  break;</span><br><span class="line"> case WM_DESTROY://窗口销毁事件</span><br><span class="line">  PostQuitMessage(0);//发送退出消息使主循环退出</span><br><span class="line">  break;</span><br><span class="line"> default:</span><br><span class="line">  return DefWindowProc(hWnd, msg, wParam, lParam);//调用默认行为处理消息</span><br><span class="line">  break;</span><br><span class="line"> &#125;</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  以上就是创建一个窗口所涉及的所有代码,这里就不详细解释了.编译并运行所有代码,记得WndProc一定要在wWinMain前面进行声明.若无意外,将会有一个白色的窗口出现,这就是一个Win32窗体程序!<br>  仅仅是这样,还远远算不上DirectX程序,我们需要初始化DirectX的渲染环境.<br>  首先为我们的工程添加DirectX的库.<br>  在项目属性-&gt;VC++目录中,找到包含目录和库目录,将$(DXSDK_DIR)\Include和$(DXSDK_DIR)Lib\x86添加.如图所示<br><img src="/images/15405634915841.png" alt=""><br>  然后在项目属性-&gt;连接器-&gt;输入-&gt;附加依赖项中,添加d3d11.lib;d3dx11.lib;dxerr.lib,然后执行编译,若无错误报告,则库配置成功.我们就可以开始初始化DirectX的渲染环境了.<br>  初始化D3D,总共分四个步骤:</p>
+<pre><code>1. 定义设备类型和特征级别(DX版本)
+2. 创建D3D设备,渲染环境(d3dContext)和交换链(swapChain)
+3. 创建渲染对象
+4. 设置观察视口(Viewport)
+</code></pre><p>  D3D11中我们可用的设备分为四种:硬件设备,软件设备,WARP设备和引用设备.硬件设备是直接利用图形硬件进行渲染,是最快的设备.软件设备是允许开发者自己编写渲染驱动并用于D3D中的设备.WARP设备是利用CPU高效渲染设备,可模拟D3D所有特性,通常用以补全硬件设备所不支持的特性而引用设备速度缓慢的情况.引用设备是利用CPU对图形硬件不支持的特性进行渲染的设备,效率低,用于没有其他替代设备时或新的DX版本发布时的情况.通常这四种设备的优先级由上到下分别为:硬件设备,WARP设备,引用设备,软件设备.D3D通过驱动类型数组进行自上而下的渲染尝试以获取最高性能和最佳效果.以下是设备类型和特征级别声明的代码:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">   D3D_DRIVER_TYPE DriverTypes[] = &#123;</span><br><span class="line">	D3D_DRIVER_TYPE_HARDWARE,</span><br><span class="line">	D3D_DRIVER_TYPE_WARP,</span><br><span class="line">	D3D_DRIVER_TYPE_REFERENCE,</span><br><span class="line">	D3D_DRIVER_TYPE_SOFTWARE</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">D3D_FEATURE_LEVEL FeatureLevels[] = &#123;</span><br><span class="line">	//D3D_FEATURE_LEVEL_11_1,//DX11.1,使用该版本需要d3d11_1.h,不在本系列范围内</span><br><span class="line">	D3D_FEATURE_LEVEL_11_0,//DX11.0</span><br><span class="line">	D3D_FEATURE_LEVEL_10_1,//DX10.1</span><br><span class="line">	D3D_FEATURE_LEVEL_10_0 //DX10.0</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">unsigned int SizeOfDriverTypes = ARRAYSIZE(DriverTypes);//获取总数</span><br><span class="line">unsigned int SizeOfFeatureLevels = ARRAYSIZE(FeatureLevels);//同上</span><br></pre></td></tr></table></figure>
+<p>  使用该段代码应当包含d3d11.h文件.代码浅显易懂,不做其他解释.声明了这些是为了创建D3D设备时使用,但是在创建D3D设备前,需要先创建交换链(<a href="https://en.wikipedia.org/wiki/Swap_Chain" target="_blank" rel="noopener">SwapChain</a>.交换链是每个设备至少有一个用以存储各种缓存的事物.交换链的存在保证了帧率的稳定和执行的稳定,每一个交换链可以有两个缓存区,这种机制被称为双面缓存(或称乒乓缓存),第一面是主缓存(或称前向缓存,frame buffer),用以输出到显示卡以进行显示,第二面是后置缓存(或称后向缓存或辅助缓存,back buffer),用以进行绘图渲染的输出.双面缓存通过一个写入一个输出,不停循环(presentation or swapping)解决了帧率不稳定等的弊病,而后置缓存并非只能有一个,可以有多个后置缓存存在,更高效的进行渲染,不使用双面缓存也是被接受但是不被推荐.通常交换链被存储在显存中,不过内存也是可以很好的存储交换链的.以下代码演示了如何创建一个交换链描述符</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   DXGI_SWAP_CHAIN_DESC scd = &#123; 0 &#125;;   //交换链描述符</span><br><span class="line">scd.BufferCount = 1;   //交换链缓存区数量</span><br><span class="line">scd.BufferDesc.Height = height;    //交换链缓存区大小</span><br><span class="line">scd.BufferDesc.Width = width;</span><br><span class="line">scd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;//缓存区格式,关于格式更多的信息请参阅3-1节</span><br><span class="line">scd.BufferDesc.RefreshRate.Numerator = 60;   //刷新率分子</span><br><span class="line">scd.BufferDesc.RefreshRate.Denominator = 1;    //刷新率分母,60hz</span><br><span class="line">scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;//缓存区用以渲染输出</span><br><span class="line">scd.OutputWindow = hwnd;//输出窗口句柄</span><br><span class="line">scd.Windowed = true;//是否窗口模式</span><br><span class="line">scd.SampleDesc.Count = 1;//取样数量</span><br><span class="line">scd.SampleDesc.Quality = 0;//取样质量</span><br></pre></td></tr></table></figure>
+<p>  关于交换链描述符成员的更详细解释在<a href="https://msdn.microsoft.com/zh-cn/library/windows/desktop/bb173075.aspx" target="_blank" rel="noopener">微软文档</a>中,这里不过多阐述.<br>  交换链和渲染设备描述都已经齐全了,接下来就要创建D3D设备了.D3D设备用来与硬件进行通讯,以通知设备渲染的环境,状态等其他信息.下列代码一起创建了D3D设备,交换链和环境.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">   ID3D11Device *d3dDevice;    //D3D设备</span><br><span class="line">ID3D11DeviceContext *d3dContext;//D3D渲染环境(渲染上下文)</span><br><span class="line">IDXGISwapChain *swapChain;//交换链</span><br><span class="line">D3D_FEATURE_LEVEL featureLevel;//特征等级(版本)</span><br><span class="line">D3D_DRIVER_TYPE driverType;//设备类型</span><br><span class="line"></span><br><span class="line">HRESULT res;</span><br><span class="line">for (int i = 0; i &lt; SizeOfDriverTypes; i++) &#123;//依次遍历四个设备类型</span><br><span class="line">	res = D3D11CreateDeviceAndSwapChain(//创建设备和交换链</span><br><span class="line">		NULL,//指定显示卡,NULL为默认</span><br><span class="line">		DriverTypes[i],//设备类型(依次遍历)</span><br><span class="line">		NULL,//动态库句柄,若为软件设备,该值不能为NULL</span><br><span class="line">		D3D11_CREATE_DEVICE_DEBUG,//创建标志,D3D11_CREATE_DEVICE_DEBUG提供可供调试的设备,若发布,则为0</span><br><span class="line">		FeatureLevels,//特征级别</span><br><span class="line">		SizeOfFeatureLevels,//特征级别数量</span><br><span class="line">		D3D11_SDK_VERSION,//SDK版本号</span><br><span class="line">		&amp;scd,//交换链描述符</span><br><span class="line">		&amp;swapChain,//交换链</span><br><span class="line">		&amp;d3dDevice,//设备</span><br><span class="line">		&amp;featureLevel,//所选中的特征级别,位于特征级别数组中</span><br><span class="line">		&amp;d3dContext//渲染环境</span><br><span class="line">	);</span><br><span class="line">	if (SUCCEEDED(res)) &#123;</span><br><span class="line">		driverType = DriverTypes[i];</span><br><span class="line">		break;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">if (FAILED(res))</span><br><span class="line">	return -1;</span><br></pre></td></tr></table></figure>
+<p>  以上代码运用函数D3D11CreateDeviceAndSwapChain同时创建了我们所需要的所有,这里我们就获得了进行渲染的设备,环境和交换链.初始化D3D.获取交换链后,我们需要创建一个渲染目标视图(Render Target View)提供给设备用来渲染.下面是创建渲染目标视图的代码.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">   ID3D11RenderTargetView *RTV;//渲染目标视图</span><br><span class="line">ID3D11Texture2D *backBuffer;//缓存</span><br><span class="line">res = swapChain-&gt;GetBuffer(</span><br><span class="line">       0, //索引,0开始</span><br><span class="line">       __uuidof(ID3D11Texture2D), //类型,2D贴图为ID3D11Texture2D</span><br><span class="line">       (void**)&amp;backBuffer//目标缓存地址,需要用void**或LPVOID强制类型转换</span><br><span class="line">   );</span><br><span class="line">if (FAILED(res))</span><br><span class="line">	return -1;</span><br><span class="line">res = d3dDevice-&gt;CreateRenderTargetView(</span><br><span class="line">       backBuffer, //缓存2D贴图</span><br><span class="line">       0, //渲染目标描述</span><br><span class="line">       &amp;RTV//渲染目标视图</span><br><span class="line">   );</span><br><span class="line">if (backBuffer)</span><br><span class="line">	backBuffer-&gt;Release();//释放以避免内存泄露</span><br><span class="line">if (FAILED(res))</span><br><span class="line">	return -1;</span><br><span class="line">   d3dContext-&gt;OMSetRenderTargets(1, &amp;RTV, 0);//设置渲染目标为渲染目标视图,参数依次为视图数量,视图列表,深度/模板视图.</span><br></pre></td></tr></table></figure>
+<p>  之所以缓存的类型是ID3D11Texture2D,是因为交换链中的前向缓存和后置缓存都是一种颜色贴图,是通过交换链的GetBuffer来获取.关于创建渲染目标视图的函数详细的信息,见<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ff476517.aspx" target="_blank" rel="noopener">微软文档</a>.最后一步是创建和设置视口(Viewport)视口是我们观察的窗口,通常一个应用程序只有一个视口,但是常见的3D设计软件或多人分屏游戏的视口是复数的.通过以下代码来创建并设置一个视口以供观察.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   D3D11_VIEWPORT vp;//视口</span><br><span class="line">vp.Width = static_cast&lt;float&gt;(width);</span><br><span class="line">vp.Height = static_cast&lt;float&gt;(height);</span><br><span class="line">vp.MinDepth = 0.0f;//最小深度</span><br><span class="line">vp.MaxDepth = 1.0f;//最大深度</span><br><span class="line">vp.TopLeftX = 0.0f;</span><br><span class="line">vp.TopLeftY = 0.0f;</span><br><span class="line"></span><br><span class="line">d3dContext-&gt;RSSetViewports(1, &amp;vp);//视口设置,参数依次为数量和视口地址</span><br></pre></td></tr></table></figure>
+<p>  至此,我们已经成功初始化了DirectX的渲染环境.为了检验我们的效果,我们用以下代码清空屏幕并设置背景为深蓝色.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   float Colors[4] = &#123; 0.0f, 0.0f, 0.25f, 0.5f &#125;;</span><br><span class="line">d3dContext-&gt;ClearRenderTargetView(RTV, Colors);</span><br><span class="line">swapChain-&gt;Present(NULL, NULL);</span><br></pre></td></tr></table></figure>
+<p>  首先定义一个颜色数组,四个浮点数分别为红色分量,绿色分量,蓝色分量,Alpha分量.这些不必多说.然后ClearRenderTargetView用刚刚定义的颜色来清空渲染目标视口,Present执行立刻更新屏幕.运行所有代码,就会得到一个蓝色背景的Win32窗体而不是之前的白色.<br>  程序的最后,我们需要把之前获得的所有东西都释放掉,让引用计数器清零来释放内存避免泄露.通常释放的顺序是创建的逆序,所以我们在主循环结束之后写入以下代码以释放之前创建的一些东西.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   if (RTV)</span><br><span class="line">	RTV-&gt;Release();</span><br><span class="line">if (swapChain)</span><br><span class="line">	swapChain-&gt;Release();</span><br><span class="line">if (d3dContext)</span><br><span class="line">	d3dContext-&gt;Release();</span><br><span class="line">if (d3dDevice)</span><br><span class="line">	d3dDevice-&gt;Release();</span><br></pre></td></tr></table></figure>
+<p>  很简单明了,不需要任何解释.在释放前需要检查对象是否为空,避免因为各种各样的问题导致释放出错程序异常.至此,我们已经完成了所有的工作,这就是你的第一个DirectX程序!</p>
+<ul>
+<li><h3 id="格式附录"><a href="#格式附录" class="headerlink" title="格式附录"></a><span id="3-1">格式附录</span></h3>  格式                                 描述<br>  DXGI_FORMAT_R32G32B32A32_TYPELESS   组成无类型 RGBA 分量的 128 位格式<br>  DXGI_FORMAT_R32G32B32A32_FLOAT      浮点类型 RGBA 分量的 128 位格式<br>  DXGI_FORMAT_R32G32B32A32_UINT       无符号整型 RGBA 分量的 128 位格式<br>  DXGI_FORMAT_R32G32B32A32_SINT       有符号整型 RGBA 分量的 128 位格式<br>  DXGI_FORMAT_R8G8B8A8_TYPELESS       组成无类型 RGBA 分量的 32 位格式<br>  DXGI_FORMAT_R8G8B8A8_UINT           无符号整型 RGBA 分量的 32 位格式<br>  DXGI_FORMAT_R8G8B8A8_SINT           有符号整型 RGBA 分量的 32 位格式<br>  (摘自DX11游戏标程入门)</li>
+</ul>
+</li>
+<li><h2 id="封装DirectX框架"><a href="#封装DirectX框架" class="headerlink" title="封装DirectX框架"></a><span id="4">封装DirectX框架</span></h2><p>  很明显,我们花了大量的时间和代码来创建一个能让我们进行渲染的DirectX环境.但是这些都发生在主函数中.为什么我们不把这些每次创建工程都要进行的工作进行一些工作,使他们能很方便的被我们使用呢?这样的工作,叫做封装.要封装这些代码,我们就要考虑封装后的自由度和拓展性.一个良好的封装是不应该让使用者去改动内部代码的.于是封装前,一定要进行一番思索,如何才能做到更好的封装.</p>
+<ul>
+<li><h3 id="框架结构"><a href="#框架结构" class="headerlink" title="框架结构"></a><span id="4-1">框架结构</span></h3>  对于框架的结构,我决定使用类似Cocos-2D的封装模式.第一次用Cocos2D的时候,这种封装模式打动了我,觉得十分的简洁高效.详细的架构设计如下图:<img src="/images/15405635095241.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<pre><code>* ### &lt;span id=&quot;4-2&quot;&gt;框架实现&lt;/span&gt;
+    实现见工程文件中的dx4s文件夹.并注意请在项目属性-&gt;C/C++-&gt;SDL检查处将SDL关闭.封装后的main.cpp如下,是不是感觉很清爽呢?
+    我已经把框架上传到了[Github](https://github.com/OyamiKoroto/dx4s &quot;Gayhub&quot;), 你可以自行进行下载.
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;dx4s/dx4s.h&quot;</span><br><span class="line"></span><br><span class="line">class MainClass :public dx4s::base &#123;</span><br><span class="line">    int Load() &#123;</span><br><span class="line">           float Colors[4] = &#123; 0.0f, 0.0f, 0.25f, 0.5f &#125;;</span><br><span class="line">           d3dContext-&gt;ClearRenderTargetView(Target, Colors);</span><br><span class="line">           swapChain-&gt;Present(NULL, NULL);</span><br><span class="line">           return 0;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;;</span><br><span class="line">DX4S_MAIN(MainClass, &quot;DirectX For Study&quot;, 800, 600)</span><br></pre></td></tr></table></figure>
+
+* ## &lt;span id=&quot;5&quot;&gt;工程文件下载&lt;/span&gt;
+    [02.zip][http://srk00.qvq.moe/usr/uploads/2016/07/2256909893.zip]
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://oyami-srk.github.io/2016/07/05/DirectX11学习笔记-2/" data-id="cjno4zxz0002w5jfb4lre573j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DirectX/">DirectX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图形学/">图形学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/08/中考成绩单/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          中考成绩单
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/02/DirectX11学习笔记-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DirectX11学习笔记 - 1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DirectX学习笔记/">DirectX学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小型项目/">小型项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数理逻辑/">数理逻辑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认分类/">默认分类</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DirectX/">DirectX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息学/">信息学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图形学/">图形学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/折腾/">折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数理逻辑/">数理逻辑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂文/">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评测/">评测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通知/">通知</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DirectX/" style="font-size: 14px;">DirectX</a> <a href="/tags/信息学/" style="font-size: 16px;">信息学</a> <a href="/tags/图形学/" style="font-size: 14px;">图形学</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/折腾/" style="font-size: 12px;">折腾</a> <a href="/tags/数理逻辑/" style="font-size: 16px;">数理逻辑</a> <a href="/tags/杂文/" style="font-size: 18px;">杂文</a> <a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/通知/" style="font-size: 20px;">通知</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/21/关于博客暂时停机的声明/">关于博客暂时停机的声明</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/16/Lambda初级简介---组合子演算/">Lambda初级简介 - 组合子演算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/14/Lambda初级简介---Y组合子/">Lambda初级简介 - Y组合子</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/12/Lambda初级简介---逻辑运算/">Lambda初级简介 - 逻辑运算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/10/Lambda初级简介---邱奇数/">Lambda初级简介 - 邱奇数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Shiroko<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

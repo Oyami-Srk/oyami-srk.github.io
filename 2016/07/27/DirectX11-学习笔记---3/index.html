@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>DirectX11 学习笔记 - 3 | 空白酱的蒟蒻心得</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DirectX11学习笔记[3]Author: OyaKti(SRK)Date: 2016/7/25-27 Direct2D初步 三角形的绘制">
+<meta name="keywords" content="编程,DirectX,图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DirectX11 学习笔记 - 3">
+<meta property="og:url" content="https://oyami-srk.github.io/2016/07/27/DirectX11-学习笔记---3/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="DirectX11学习笔记[3]Author: OyaKti(SRK)Date: 2016/7/25-27 Direct2D初步 三角形的绘制">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405614293073.jpg">
+<meta property="og:updated_time" content="2018-10-26T14:12:29.190Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DirectX11 学习笔记 - 3">
+<meta name="twitter:description" content="DirectX11学习笔记[3]Author: OyaKti(SRK)Date: 2016/7/25-27 Direct2D初步 三角形的绘制">
+<meta name="twitter:image" content="https://oyami-srk.github.io/images/15405614293073.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="空白酱的蒟蒻心得" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">空白酱的蒟蒻心得</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">在辣鸡的领域摸爬滚打</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://oyami-srk.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DirectX11-学习笔记---3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/27/DirectX11-学习笔记---3/" class="article-date">
+  <time datetime="2016-07-27T12:48:00.000Z" itemprop="datePublished">2016-07-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DirectX学习笔记/">DirectX学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DirectX11 学习笔记 - 3
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DirectX11学习笔记-3"><a href="#DirectX11学习笔记-3" class="headerlink" title="DirectX11学习笔记[3]"></a>DirectX<em>11</em>学习笔记[3]</h1><p>Author: <a href="http://blog.qvq.moe/" title="OyaKti的弱鸡心得" target="_blank" rel="noopener"><em>OyaKti(SRK)</em></a><br>Date: 2016/7/25-27<br><img src="/images/15405614293073.jpg" alt=""></p>
+<h2 id="Direct2D初步-三角形的绘制"><a href="#Direct2D初步-三角形的绘制" class="headerlink" title="Direct2D初步 三角形的绘制"></a>Direct2D初步 三角形的绘制</h2><hr>
+<a id="more"></a>
+<p><span id="home"></span></p>
+<p><a href="#1">1.导出项目模板以便操作</a><br><a href="#2">2.计算机几何简介</a><br><a href="#3">3.定义三角形</a><br><a href="#4">4.渲染三角形</a><br>    <a href="#4-1">4-1.初始化渲染环境</a><br>    <a href="#4-2">4-2.执行渲染</a><br><a href="#x">x.附录</a></p>
+<ul>
+<li><h2 id="导出项目模板以便操作"><a href="#导出项目模板以便操作" class="headerlink" title="导出项目模板以便操作"></a><span id="1">导出项目模板以便操作</span></h2><p>  Visual Studio有一种很方便的功能,能将现有的项目导出至模板从而不用每一次都从头创建新的工程.我们现在将上次笔记所创建的项目导出至模板.<br>  首先,点击文件-&gt;导出模板, 这里我们要创建一个项目模板. 所以点击项目模板然后选中我们的项点击下一步.<br>  按照图中填入库并点击确定,然后你就可以通过新建项目来直接建立Dx4s的项目啦!<br>  目前我已将dx4s上传至github, 不方便下载工程的可以去github克隆. <a href="https://github.com/OyamiKoroto/dx4s &quot;gayhub" target="_blank" rel="noopener">点我进入</a>.</p>
+<p>  <a href="#home">返回目录</a></p>
+</li>
+<li><h2 id="计算机几何简介"><a href="#计算机几何简介" class="headerlink" title="计算机几何简介"></a><span id="2">计算机几何简介</span></h2><p>  正如我们现实中的几何学, 计算机渲染中所有的几何体都是由点线面组成的. 而归根结底都是由点组成的, 点与点之间的连线构成了几何体的边, 边构成了面, 最后面构成了体.<br>  同样在计算机几何里, 顶点就是构成物体的基础. 顶点定义了空间里的一个点, 通过这个点和其的各种属性, 以构成不同的几何体来提供给渲染器渲染. 顶点的属性十分多, 但是位置属性是其最基础的属性. 通常我们用三个浮点型来分别表述xyz属性.<br>  尽管DirectX是3D渲染的API, 但是我们依旧可以利用它来高效的渲染2D图形.<br>  我们主要讨论2D图形的渲染, 所以更多有关于计算机几何的知识我没有在此进行说明, 我会在以后的笔记里进行更详细的叙述. 目前, 我们仅需知道顶点的作用和定义就可以了.</p>
+<p>  <a href="#home">返回目录</a></p>
+</li>
+<li><h2 id="定义三角形"><a href="#定义三角形" class="headerlink" title="定义三角形"></a><span id="3">定义三角形</span></h2><p>  三角形是计算机图形学里的常见图形, 定义并渲染一个三角形通常是很多图形引擎教程的第一课, 所以, 我们也要定义并渲染一个三角形.<br>  一个三角形显而易见由三个顶点构成, 每一个顶点都包含三个浮点数. 我们使用XNA的数学库来定义一个顶点的结构体.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typedef struct Vertex&#123;</span><br><span class="line">    XMFLOAT3 Position;</span><br><span class="line">&#125; Vertex;</span><br></pre></td></tr></table></figure>
+<p>  可能有人会觉得奇怪, 这里只有一个成员, 但是为什么要单独定义一个结构体而不直接使用数组呢. 原因很简单, 前面已经说了, 顶点的属性不单单包含位置关系而且还包含其他的一些属性, 我们定义一个结构体就是为了能让其他的属性一并包含在里面, 这里我们只定义了最基础的位置属性, 以后我们还会定义其他的属性. 通常情况下大多数程序猿会用Vector(向量)来代替Vertex(顶点)的位置属性, 这是合情合理的, 不单单是因为这俩长得像, 而且从数学上来讲, 也是正确的. 向量通常表示空间内的某一个点到原点的方向, 而3D空间的原点的xyz分量通常总为0, 所以向量的方向刚好和这个点相对于原点的相对位置相同. 而相对于原点的相对位置也就是绝对位置, 所以Vector结构通常也用来定义Vertex的位置.<br>  知道如何定义顶点了,我们接下来就定义三个顶点来构造出一个三角形.<br>  构造三角形之前, 我们需要定义坐标系. 虽然DirectX没有强制的坐标系规定, 但是因为DirectX默认使用的是左手坐标系, 所以我们将不做多余的工作, 也使用左手坐标系.<br>  坐标系的介绍不过多阐述, Z轴正方向向里, X轴正方向向屏幕右侧, Y轴则是上方.<br>  我们现在定义了坐标系, 就要定义顶点了. 顶点的定义如下.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   Vertex vertexs[] = &#123;</span><br><span class="line">	XMFLOAT3(0.0f, 0.0f, 0.1f),</span><br><span class="line">	XMFLOAT3(0.5f, -0.5f, 0.1f),</span><br><span class="line">	XMFLOAT3(-0.5f, -0.5f, 0.1f),</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>  通常情况下, 为了节约内存开销, 定义顶点应遵循只定义唯一顶点的原则.<br>  我们现在就有了顶点的定义数据, 接下来, 我们就要将数据传递给显卡, 并经过着色器进行渲染.</p>
+</li>
+<li><h2 id="渲染三角形-初始化渲染环境"><a href="#渲染三角形-初始化渲染环境" class="headerlink" title="渲染三角形: 初始化渲染环境"></a><span id="4-1">渲染三角形: 初始化渲染环境</span></h2><p>  我们已经定义了构成一个三角形所需的三个顶点, 现在要将这些顶点放置在缓存里, 这就叫做顶点缓存. 通常缓存的位置是在最有利于和图形硬件交换数据的地方, 也就是显存. 以下代码显示了如何创建一个顶点缓存.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   ID3D11Buffer *vertexBuffer = nullptr;   //目标缓存, 定义为全局变量</span><br><span class="line">   D3D11_BUFFER_DESC BufferDesc = &#123; 0 &#125;;   //缓存描述符</span><br><span class="line">BufferDesc.ByteWidth = sizeof(Vertex) * 3;     //设置缓存大小</span><br><span class="line">BufferDesc.Usage = D3D11_USAGE_DEFAULT;    //设置缓存方法</span><br><span class="line">BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;   //设置缓存绑定方式</span><br><span class="line">D3D11_SUBRESOURCE_DATA subData = &#123; 0 &#125;;    //子资源</span><br><span class="line">subData.pSysMem = vertexs;   //用顶点数据填充子资源</span><br><span class="line">res = d3dDevice-&gt;CreateBuffer(&amp;BufferDesc, &amp;subData, &amp;vertexBuffer);   //创建缓存</span><br><span class="line">if (FAILED(res))</span><br><span class="line">	return -1;</span><br></pre></td></tr></table></figure>
+<p>  首先我们需要对缓存描述符进行初始化, 缓存大小即是我们定义的顶点数据的大小.<br>  在我们已经确定好缓存的数据的情况下, 就要将其填充至缓存, 这种时候我们就需要使用子资源来填充缓存. D3D11_SUBRESOURCE_DATA有三个成员, pSysMem为一个内存指针, 指向我们需要填充到缓存的数据. SysMemPitch和SysMemSlicePitch则用于处理贴图.<br>  CreateBuffer函数用于创建缓存, 参数分别为缓存描述符地址, 子资源地址和缓存目标地址. 通过这个函数, 我们就可以创建一个由描述符描述, 子数据填充的顶点缓存了.<br>  缓存通常是储存在显存内, 用于提供给图形设备渲染的数据. 但是缓存说白了就是内存里的一大坨数据, 发送给图形设备, 它并不能知道这坨数据的顺序, 大小, 属性等.所以我们要通知图形设备各种数据的各种属性, D3D提供了一个描述符, 叫做输入布局描述符. 该描述符组成的数组描述了一个顶点的结构布局. 该描述符的定义如下:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    LPCSTR SemanticName;</span><br><span class="line">    UINT SemanticIndex;</span><br><span class="line">    DXGI_FORMAT Format;</span><br><span class="line">    UINT InputSlot;</span><br><span class="line">    UINT AlignedByteOffset;</span><br><span class="line">    D3D11_INPUT_CLASSIFICATION InputSlotClass;</span><br><span class="line">    UINT InstanceDataStepRate;</span><br><span class="line">&#125; 	D3D11_INPUT_ELEMENT_DESC;</span><br></pre></td></tr></table></figure>
+<p>  第一个元素是语义名称, 让元素绑定一个HLSL着色器(shader)作为输入输出对象. 第二个是语义索引, 不同元素若想绑定相同的语义时, 利用语义索引来进行处理. 第三个是元素的格式, 指明了数据的格式. 第四个是输入槽, 当绑定和传递了多个顶点缓存, 输入槽就是顶点缓存的索引. 第五个是字节对齐偏移量, 字面意义. 第六个是输入槽类型, 指明了元素的输入类型(逐顶点或逐对象). 第七个是实例的数量.<br>  创建一个输入布局需要使用CreateInputLayout函数, 该函数原型如下:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HRESULT CreateInputLayout(</span><br><span class="line">    const D3D11_INPUT_ELEMENT_DESC *pInputElementDescs,</span><br><span class="line">    UINT NumElements,</span><br><span class="line">    const void *pShaderBytecodeWithInputSignature,</span><br><span class="line">    SIZE_T BytecodeLength,</span><br><span class="line">    ID3D11InputLayout **ppInputLayout</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>  第一个参数是输入布局描述符数组的地址, 第二个则是数组元素的数量, 第三个是一个着色器已编译代码的地址, 第四个是着色器代码的大小. 第五个则是输入布局的对象指针.<br>  创建一个输入布局, 所需要的参数中有着色器. 那么什么是着色器呢? 着色器是在GPU上执行的一种程序, 用来渲染. 以下代码显示了如何编译一个顶点着色器代码.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   DWORD Flag = D3DCOMPILE_ENABLE_STRICTNESS;</span><br><span class="line">   #if defined(_DEBUG) || defined(DEBUG)</span><br><span class="line">   Flag |= D3DCOMPILE_DEBUG;</span><br><span class="line">   #endif</span><br><span class="line">ID3DBlob *errBuffer = nullptr;</span><br><span class="line">   ID3DBlob *vsBuffer = nullptr;</span><br><span class="line">HRESULT res = D3DX11CompileFromFile(&quot;shader.fx&quot;, NULL, NULL, &quot;VS_Main&quot;, &quot;vs_4_0&quot;, Flag, NULL, NULL, &amp;vsBuffer, &amp;errBuffer, NULL);</span><br><span class="line">	if (FAILED(res)) &#123;</span><br><span class="line">		if (errBuffer) &#123;</span><br><span class="line">			OutputDebugString((LPCSTR)errBuffer-&gt;GetBufferPointer());</span><br><span class="line">			errBuffer-&gt;Release();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">if (errBuffer)</span><br><span class="line">	errBuffer-&gt;Release();</span><br></pre></td></tr></table></figure>
+<p>  我们使用D3DX11CompileFromFile来编译着色器代码, 该函数原型如下:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">HRESULT D3DX11CompileFromFile(</span><br><span class="line">    LPCTSTR pSrcFile,</span><br><span class="line">    const D3D10_SHADER_MACRO* pDefines,</span><br><span class="line">    LPD3D10INCLUDE pInclude,</span><br><span class="line">    LPCSTR pFunctionName,</span><br><span class="line">    LPCSTR pProfile,</span><br><span class="line">    UINT Flags1,</span><br><span class="line">    UINT Flags2,</span><br><span class="line">    ID3DX11ThreadPump* pPump,</span><br><span class="line">    ID3D10Blob** ppShader,</span><br><span class="line">    ID3D10Blob** ppErrorMsgs,</span><br><span class="line">    HRESULT* pHResult</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>  第一个参数为着色器源码的地址, 第二个则是着色器的全局宏, 类似于C语言中的宏, 若要定义一个宏, 语法如下:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const D3D10_SHADER_MACRO Macros[] = &#123; &quot;HELLO&quot;, &quot;hello&quot;, &#125;;</span><br></pre></td></tr></table></figure>
+<p>  第三各参数处理着色器的include语句, 第四个参数是着色器入口点, 第五个参数是着色器类型, 第六个参数是<a href="#x">编译标识</a>, 第七个参数是<a href="#x">特效标识</a>, 第八个是用于异步编译着色器的线程pump指针, 第九个是编译完成后字节码的存放地址, 第十个是错误和警告信息的内存地址. 第十一个则是线程pump的返回值.<br>  上面的代码可以写作函数来方便调用:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">//utils.h</span><br><span class="line">namespace dx4s &#123;</span><br><span class="line">    class utils &#123;</span><br><span class="line">        public:</span><br><span class="line">        static bool ShaderCompile(const char *Filename,</span><br><span class="line">            const char *entryPoint,</span><br><span class="line">            const char *proFile,</span><br><span class="line">            ID3DBlob **buffer,</span><br><span class="line">            UINT Flag = D3DCOMPILE_ENABLE_STRICTNESS</span><br><span class="line">        );</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//utils.cpp</span><br><span class="line">bool dx4s::utils::ShaderCompile(const char *Filename, const char *entryPoint, const char *proFile, ID3DBlob **buffer, UINT Flag /* = D3DCOMPILE_ENABLE_STRICTNESS */) &#123;</span><br><span class="line">    #if defined(_DEBUG) || defined(DEBUG)</span><br><span class="line">    Flag |= D3DCOMPILE_DEBUG;</span><br><span class="line">    #endif</span><br><span class="line">    ID3DBlob *errBuffer = nullptr;</span><br><span class="line">    HRESULT res = D3DX11CompileFromFile(Filename, NULL, NULL, entryPoint, proFile, Flag, NULL, NULL, buffer, &amp;errBuffer, NULL);</span><br><span class="line">    if (FAILED(res)) &#123;</span><br><span class="line">        if (errBuffer) &#123;</span><br><span class="line">            OutputDebugString((LPCSTR)errBuffer-&gt;GetBufferPointer());</span><br><span class="line">            errBuffer-&gt;Release();</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    if (errBuffer)</span><br><span class="line">    errBuffer-&gt;Release();</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  利用该函数编译一个顶点着色器的代码如下:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   ID3DBlob *vsBuffer = nullptr;</span><br><span class="line">if (!dx4s::utils::ShaderCompile(&quot;shader.fx&quot;, &quot;VS_Main&quot;, &quot;vs_4_0&quot;, &amp;vsBuffer))</span><br><span class="line">		return -1;</span><br></pre></td></tr></table></figure>
+<p>  编译完了一个顶点着色器, 我们就获得了这个着色器的字节码, 但是若想将这些字节码运行在GPU上, 我们就要加载我们已经编译好的字节码.<br>  以下代码创建了一个顶点着色器:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   ID3D11VertexShader *VS = nullptr;   //该变量应为全局变量</span><br><span class="line">   HRESULT res = d3dDevice-&gt;CreateVertexShader(vsBuffer-&gt;GetBufferPointer(), vsBuffer-&gt;GetBufferSize(), 0, &amp;VS);</span><br><span class="line">if (FAILED(res)) &#123;</span><br><span class="line">	if (vsBuffer)</span><br><span class="line">		vsBuffer-&gt;Release();</span><br><span class="line">	return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  然后就是指定顶点元素的布局, 我们已经介绍了输入布局描述符(D3D11_INPUT_ELEMENT_DESC)的定义, 我们现在就要初始化一个语义为POSITION的, 格式为DXGI_FORMAT_R32G32B32_FLOAT, 输入类型为逐顶点的布局数组:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   D3D11_INPUT_ELEMENT_DESC inputLayoutDesc[] = &#123;</span><br><span class="line">	&#123;</span><br><span class="line">		&quot;POSITION&quot;, 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;;</span><br><span class="line">   HRESULT res = d3dDevice-&gt;CreateInputLayout(inputLayoutDesc, ARRAYSIZE(inputLayoutDesc), vsBuffer-&gt;GetBufferPointer(), vsBuffer-&gt;GetBufferSize(), &amp;inputLayout);</span><br><span class="line">if (FAILED(res))</span><br><span class="line">	return -1;</span><br></pre></td></tr></table></figure>
+<p>  然后我们通常要载入像素着色器, 代码和载入顶点着色器类似.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   ID3DBlob *psBuffer = nullptr;</span><br><span class="line">if (!dx4s::utils::ShaderCompile(&quot;shader.fx&quot;, &quot;PS_Main&quot;, &quot;ps_4_0&quot;, &amp;psBuffer))</span><br><span class="line">	return -1;</span><br><span class="line">HRESULT res = d3dDevice-&gt;CreatePixelShader(psBuffer-&gt;GetBufferPointer(), psBuffer-&gt;GetBufferSize(), 0, &amp;PS);</span><br><span class="line">if (FAILED(res))</span><br><span class="line">	return -1;</span><br></pre></td></tr></table></figure>
+<p>  至此, 我们就完成了所有初始化的工作. 这些工作应该仅执行一次, 所以我们就在Load()函数内执行这些工作. 为了渲染, 我们需要将以下变量定义为全局变量.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   ID3D11Buffer *vertexBuffer = nullptr;</span><br><span class="line">ID3D11VertexShader *VS = nullptr;</span><br><span class="line">ID3D11PixelShader *PS = nullptr;</span><br><span class="line">ID3D11InputLayout *inputLayout = nullptr;</span><br></pre></td></tr></table></figure>
+<p>  至此, 所有渲染环境的工作都进行完毕. 可以进行渲染了.</p>
+<p>  <a href="#home">返回目录</a></p>
+</li>
+<li><h2 id="渲染三角形-执行渲染"><a href="#渲染三角形-执行渲染" class="headerlink" title="渲染三角形: 执行渲染"></a><span id="4-2">渲染三角形: 执行渲染</span></h2><p>  我们已经创建了顶点着色器, 像素着色器, 输入布局, 顶点缓存在初始化代码中. 若要进行渲染, 我们首先要绑定这些.<br>  用以下两条代码绑定顶点着色器和像素着色器.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   d3dContext-&gt;VSSetShader(VS, 0, 0);</span><br><span class="line">d3dContext-&gt;PSSetShader(PS, 0, 0);</span><br></pre></td></tr></table></figure>
+<p>  这两条代码的参数相似, 分别为着色器, 实例数组, 实例数量.<br>  然后用<code>d3dContext-&gt;IASetInputLayout(inputLayout);</code>绑定输入布局.<br>  最后我们要载入顶点缓存, 代码如下:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   unsigned int stride = sizeof(XMFLOAT3);</span><br><span class="line">unsigned int offset = 0;</span><br><span class="line">d3dContext-&gt;IASetVertexBuffers(0, 1, &amp;vertexBuffer, &amp;stride, &amp;offset);</span><br></pre></td></tr></table></figure>
+<p>  IASetVertexBuffers用于载入一个或多个顶点缓存, 原型如下:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void IASetVertexBuffers(</span><br><span class="line">    UINT StartSlot,</span><br><span class="line">    UINT NumBuffers,</span><br><span class="line">    ID3D11Buffer* const* ppVertexBuffers,</span><br><span class="line">    const UINT* pStrides,</span><br><span class="line">    const UINT* pOffsets</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>  第一个参数是绑定缓存的开始槽, 也就是缓存数组中缓存的索引编号. 第二个是设置缓存数量, 第三个是缓存数组, 第四个是定点步长, 是每个顶点的字节数. 最后一个参数是字节偏移量.第三第四个参数若有多个缓存则为数组.<br>  然后我们就要设置几何类型, 使用如下代码设置一个三角形列表(若仅有三个顶点, 则为三角形)的几何类型.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d3dContext-&gt;IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);</span><br></pre></td></tr></table></figure>
+<p>  最后, 我们用如下代码将三角形绘制出来:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   d3dContext-&gt;Draw(3, 0);</span><br><span class="line">swapChain-&gt;Present(0, 0);</span><br></pre></td></tr></table></figure>
+<p>  Draw函数的第一个参数代表了顶点数量, 第二个则是开始顶点的位置, 也就是开始顶点距离顶点缓存开头的偏移量.<br>  至此, 我们就完成了绘制一个三角形的所有工作.<br>  等等, 你说shader.fx? 对了, 我们还需要写着色器代码.<br>  shader.fx全文如下:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">float4 VS_Main(float4 pos : POSITION) : SV_POSITION &#123;</span><br><span class="line">	return pos;</span><br><span class="line">&#125;</span><br><span class="line">float4 PS_Main(float4 pos : SV_POSITION) : SV_TARGET &#123;</span><br><span class="line">	return float4(0.5f,0.0f,0.0f,1.0f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  VS_Main是顶点着色器, 接收我们的POSITION语义绑定的输入布局, 返回值则是SV_POSITION, 顶点着色器对传入的顶点位置进行处理后输出, 但是我们这里不用做任何处理, 直接输出就可以了. 像素着色器始终返回一个固定的颜色值, 并写入缓存, 通过调用交换链的Present来显示到屏幕上.<br>  现在, 一个红色的三角形就绘制完成了!</p>
+<p>  <a href="#home">返回目录</a></p>
+</li>
+<li><h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a><span id="x">附录</span></h2><p>  编译标识:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">D3D10_SHADER_AVOID_FLOW_CONTROL                 //任何时候都禁止流控制  </span><br><span class="line">D3D10_SHADER_DEBUG                              //编译着色器时插入调试信息  </span><br><span class="line">D3D10_SHADER_ENABLE_STRICTNESS                  //禁止过时的语法  </span><br><span class="line">D3D10_SHADER_ENABLE_BACKWARDS_COMPATIBILITY     //在着色器 4.0 中允许过时的语法  </span><br><span class="line">D3D10_SHADER_FORCE_VS_SOFTWARE_NO_OPT           //强制顶点着色器在下一个最高的支持版本上编译  </span><br><span class="line">D3D10_SHADER_FORCE_PS_SOFTWARE_NO_OPT           //强制像素着色器在下一个最高的支持版本上编译  </span><br><span class="line">D3D10_SHADER_IEEE_STRICTNESS                    //在编译器中启用严格 IEEE 标准  </span><br><span class="line">D3D10_SHADER_NO_PRESHADER                       //禁止编译器从静态表达式中退出  </span><br><span class="line">D3D10_SHADER_OPTIMIZATION_LEVEL0 (0-3)          //设置优化级别，第 0 级不优化，运行最慢，第 3 级完全优化</span><br><span class="line">D3D10_SHADER_PACK_MATRIX_ROW_MAJOR              //使用行主序布局的矩阵声明  </span><br><span class="line">D3D10_SHADER_PACK_MATRIX_COLUMN_MAJOR           //使用列主序布局的矩阵声明  </span><br><span class="line">D3D10_SHADER_PARTIAL_PRECISION                  //强制使用局部精度计算，在某些硬件上会提升性能  </span><br><span class="line">D3D10_SHADER_PREFER_FLOW_CONTROL                //告诉编译器在任何可能的时候尽量使用流控制</span><br><span class="line">D3D10_SHADER_SKIP_OPTIMIZATION                  //编译着色器代码时，完全跳过优化阶段  </span><br><span class="line">D3D10_SHADER_WARNINGS_ARE_ERRORS                //编译时将警告视为错误</span><br></pre></td></tr></table></figure>
+<p>  特效标识:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">D3D10_EFFECT_COMPILE_CHILD_EFFECT       //允许编译子特效  </span><br><span class="line">D3D10_EFFECT_COMPILE_ALLOW_SLOW_OPS     //禁止最佳性能模式  </span><br><span class="line">D3D10_EFFECT_SINGLE_THREADED            //加载特效池(pool)时禁止与其它线程同步</span><br></pre></td></tr></table></figure>
+<p>  工程文件下载<a href="http://srk00.qvq.moe/usr/uploads/2016/07/1041139892.zip" target="_blank" rel="noopener">点我</a></p>
+<p>  <a href="#home">返回目录</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://oyami-srk.github.io/2016/07/27/DirectX11-学习笔记---3/" data-id="cjno4zxyz002v5jfbjdhtdpxl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DirectX/">DirectX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图形学/">图形学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/29/Directx学习笔记目录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Directx学习笔记目录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/23/+1s长者续命站/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">+1s长者续命站</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DirectX学习笔记/">DirectX学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小型项目/">小型项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数理逻辑/">数理逻辑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认分类/">默认分类</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DirectX/">DirectX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息学/">信息学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图形学/">图形学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/折腾/">折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数理逻辑/">数理逻辑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂文/">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评测/">评测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通知/">通知</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DirectX/" style="font-size: 14px;">DirectX</a> <a href="/tags/信息学/" style="font-size: 16px;">信息学</a> <a href="/tags/图形学/" style="font-size: 14px;">图形学</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/折腾/" style="font-size: 12px;">折腾</a> <a href="/tags/数理逻辑/" style="font-size: 16px;">数理逻辑</a> <a href="/tags/杂文/" style="font-size: 18px;">杂文</a> <a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/通知/" style="font-size: 20px;">通知</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/21/关于博客暂时停机的声明/">关于博客暂时停机的声明</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/16/Lambda初级简介---组合子演算/">Lambda初级简介 - 组合子演算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/14/Lambda初级简介---Y组合子/">Lambda初级简介 - Y组合子</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/12/Lambda初级简介---逻辑运算/">Lambda初级简介 - 逻辑运算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/10/Lambda初级简介---邱奇数/">Lambda初级简介 - 邱奇数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Shiroko<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

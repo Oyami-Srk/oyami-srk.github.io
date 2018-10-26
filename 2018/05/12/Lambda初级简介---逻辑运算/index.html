@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Lambda初级简介 - 逻辑运算 | 空白酱的蒟蒻心得</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如果说计算机的血液是零与一，那么逻辑运算是她的心脏。">
+<meta name="keywords" content="数理逻辑,信息学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lambda初级简介 - 逻辑运算">
+<meta property="og:url" content="https://oyami-srk.github.io/2018/05/12/Lambda初级简介---逻辑运算/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="如果说计算机的血液是零与一，那么逻辑运算是她的心脏。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-26T12:57:35.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lambda初级简介 - 逻辑运算">
+<meta name="twitter:description" content="如果说计算机的血液是零与一，那么逻辑运算是她的心脏。">
+  
+    <link rel="alternate" href="/atom.xml" title="空白酱的蒟蒻心得" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">空白酱的蒟蒻心得</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">在辣鸡的领域摸爬滚打</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://oyami-srk.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Lambda初级简介---逻辑运算" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/12/Lambda初级简介---逻辑运算/" class="article-date">
+  <time datetime="2018-05-12T15:21:00.000Z" itemprop="datePublished">2018-05-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数理逻辑/">数理逻辑</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Lambda初级简介 - 逻辑运算
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果说计算机的血液是零与一，那么逻辑运算是她的心脏。</p>
+<a id="more"></a>
+<blockquote>
+<p>同样，真假与或非也是不存在的。</p>
+</blockquote>
+<p>​    邱奇数的定义想必十分精妙，如果能理解邱奇数，那么理解逻辑运算只不过是手到擒来的事情罢了。前文说过，λ演算强大到可以进行逻辑推演；那么同样，我们需要用函数来定义的逻辑运算。</p>
+<p>​    前文的简介长达2800字，真的是简介了。相信这次我能把字数压缩到800字左右，毕竟东西不多。</p>
+<p>​    和邱奇数一样，λ演算里的逻辑运算所使用的真假定义也叫“邱奇布尔值”。其定义比邱奇数更加简单。为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TRUE := λx y.x</span><br><span class="line">FALSE := λx y.y</span><br></pre></td></tr></table></figure>
+<p>​    这两个值实际上并不直观，不过如果联想，在机器编程里TRUE的功能是当TRUE时执行第一个语句块抛弃第二个语句块，FALSE的功能是执行第一个抛弃第二个的情况，事情就变得直观许多。事实上，λ演算内布尔值的定义有许多，其归根结底是根据逻辑运算的定义而定义的。之所以邱奇布尔值的定义如上，那是因为逻辑运算所需要这样的特性。</p>
+<p>​    逻辑运算总共分为三种：和(AND)、或(OR)、非(NOT)，其在λ演算内，基于邱奇布尔值的通常定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AND := λp q . p q FALSE</span><br><span class="line">OR  := λp q . p TRUE q</span><br><span class="line">NOT := λp   . p FALSE TRUE</span><br></pre></td></tr></table></figure>
+<p>​    若与邱奇布尔值结合来看，其实是十分简单易懂的(现代魔法)。求和在于两者皆真结果真，所以当AND的参数p、q两者接受到假的时候都会返回假：当p为假，根据定义返回第二个参数，即FALSE。当p为真，根据定义返回第一个参数，q为真则返回真，为假则假。OR和NOT同理。下面我们来推导一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AND TRUE FALSE</span><br><span class="line">(λp q . p q FALSE) TRUE FALSE	# 代换AND定义</span><br><span class="line">TRUE FALSE FALSE				# β-归约, 展开</span><br><span class="line">(λx y.x) FALSE FALSE			# 代换TRUE定义</span><br><span class="line">FALSE							# β-归约, 展开</span><br></pre></td></tr></table></figure>
+<p>​    如果你刚刚看完邱奇数那篇，那么你可能注意到了，FALSE的定义在α-转换后和zero的定义是一样的，即FALSE等价于zero，这和许多机器编程以及人的直感是相符的。根据这个，我们很容易就可以判定一个数字是否为零。一般来说，判断一个数字是否为零的函数“ISZERO”的定义是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISZERO := λn.n(λx.FALSE) TRUE</span><br></pre></td></tr></table></figure>
+<p>​    同样也是十分容易理解的，当n不等于零的时候肯定存在最外层的后继函数，所以要让后继函数恒返回FALSE。当n等于零的时候只有零点函数存在，所以返回TRUE。</p>
+<p>​    当然，我们也可以写出if语句来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IF := λp x y. p x y</span><br></pre></td></tr></table></figure>
+<p>​    归功于邱奇布尔值十分简单，我们也能用这样简单的方法来实现if。二元组及其相关操作也可以通过这些来实现。二元组就是两个有顺序的数据存在一起的组合，又称为有序对，其和我们所说的链表是一样的，当有序对的第一个数据为链表的元素，第二个数据为另一个有序对时，这就构成了一个链表，比如：<code>(a (b (c d))</code>。其有关操作定义为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CONS := λx y.λp IF p x y</span><br><span class="line">CAR  := λx.x TRUE</span><br><span class="line">CDR  := λx.x FALSE</span><br></pre></td></tr></table></figure>
+<p>​    定义简明无需多言。何况不试着用JavaScript实现这一切呢？</p>
+<p>​    现在，我们有了逻辑运算，有了if语句，有了数字，有了基础运算，我们就可以打拼一片属于λ的天下了！可能你已经迫不及待的想写一写实际的算法来大展身手。可能你想用大家熟知的阶乘运算来证明λ的实力，很简单，你写出了以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FACT := λn.IF (ISZERO n) 1 (mul n (FACT (pre n)))</span><br></pre></td></tr></table></figure>
+<p>​    然后兴致冲冲的宣布你在λ里实现了阶乘！</p>
+<p>​    等一下……</p>
+<p>​    这里的FACT是什么？</p>
+<p>​    λ演算里真的有FACT存在吗？</p>
+<p>​    调用自身的话，就一定要使用函数名吗？</p>
+<p>​    可是，λ演算存在的仅仅只有匿名函数啊？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://oyami-srk.github.io/2018/05/12/Lambda初级简介---逻辑运算/" data-id="cjno4zxxf000n5jfb0ysohage" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息学/">信息学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数理逻辑/">数理逻辑</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/14/Lambda初级简介---Y组合子/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lambda初级简介 - Y组合子
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/10/Lambda初级简介---邱奇数/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lambda初级简介 - 邱奇数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DirectX学习笔记/">DirectX学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小型项目/">小型项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数理逻辑/">数理逻辑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认分类/">默认分类</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DirectX/">DirectX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息学/">信息学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图形学/">图形学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/折腾/">折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数理逻辑/">数理逻辑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂文/">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评测/">评测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通知/">通知</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DirectX/" style="font-size: 14px;">DirectX</a> <a href="/tags/信息学/" style="font-size: 16px;">信息学</a> <a href="/tags/图形学/" style="font-size: 14px;">图形学</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/折腾/" style="font-size: 12px;">折腾</a> <a href="/tags/数理逻辑/" style="font-size: 16px;">数理逻辑</a> <a href="/tags/杂文/" style="font-size: 18px;">杂文</a> <a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/通知/" style="font-size: 20px;">通知</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/21/关于博客暂时停机的声明/">关于博客暂时停机的声明</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/16/Lambda初级简介---组合子演算/">Lambda初级简介 - 组合子演算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/14/Lambda初级简介---Y组合子/">Lambda初级简介 - Y组合子</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/12/Lambda初级简介---逻辑运算/">Lambda初级简介 - 逻辑运算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/10/Lambda初级简介---邱奇数/">Lambda初级简介 - 邱奇数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Shiroko<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

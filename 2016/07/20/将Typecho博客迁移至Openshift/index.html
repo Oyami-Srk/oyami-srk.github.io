@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>将Typecho博客迁移至Openshift | 空白酱的蒟蒻心得</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="将Typecho博客迁移至OpenshiftAuthor: OyaKti(SRK)Date: 2016/7/19 Vultr炸了之后">
+<meta name="keywords" content="杂文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="将Typecho博客迁移至Openshift">
+<meta property="og:url" content="https://oyami-srk.github.io/2016/07/20/将Typecho博客迁移至Openshift/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="将Typecho博客迁移至OpenshiftAuthor: OyaKti(SRK)Date: 2016/7/19 Vultr炸了之后">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405608515005.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405607639834.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/3407149246-1.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/3615289931-1.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/3059732140-1.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405608024234.png">
+<meta property="og:updated_time" content="2018-10-26T13:34:15.444Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="将Typecho博客迁移至Openshift">
+<meta name="twitter:description" content="将Typecho博客迁移至OpenshiftAuthor: OyaKti(SRK)Date: 2016/7/19 Vultr炸了之后">
+<meta name="twitter:image" content="https://oyami-srk.github.io/images/15405608515005.png">
+  
+    <link rel="alternate" href="/atom.xml" title="空白酱的蒟蒻心得" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">空白酱的蒟蒻心得</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">在辣鸡的领域摸爬滚打</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://oyami-srk.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-将Typecho博客迁移至Openshift" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/20/将Typecho博客迁移至Openshift/" class="article-date">
+  <time datetime="2016-07-20T05:20:00.000Z" itemprop="datePublished">2016-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      将Typecho博客迁移至Openshift
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="将Typecho博客迁移至Openshift"><a href="#将Typecho博客迁移至Openshift" class="headerlink" title="将Typecho博客迁移至Openshift"></a>将Typecho博客迁移至Openshift</h1><p>Author: <a href="http://blog.qvq.moe/" title="OyaKti的弱鸡心得" target="_blank" rel="noopener"><em>OyaKti(SRK)</em></a><br>Date: 2016/7/19<br><img src="/images/15405608515005.png" alt=""></p>
+<h2 id="Vultr炸了之后"><a href="#Vultr炸了之后" class="headerlink" title="Vultr炸了之后"></a>Vultr炸了之后</h2><hr>
+<a id="more"></a>
+<p>Vultr前几天炸掉了…莫名其妙的,不能访问谷歌.于是我就决定备份一下所有的东西然后把Vultr的vps销毁掉.<br>Openshift是RH开发的免费云空间,详细叙述我便不再多讲.把博客迁移到Openshift(下文简称OSF)是十分简单的,只要掌握一点人生的经验就好.<br>我首先将vps上的blog数据库进行备份,文件名是blog.sql.然后博客本体的程序用ftp下载了下来,文件目录如下:<br><img src="/images/15405607639834.png" alt=""><br>首先我们需要一个OFS的账号,OFS账号注册还是十分简单的,登录OFS的<a href="https://openshift.redhat.com/" title="点我" target="_blank" rel="noopener">官网</a>,然后右上角会有一个<a href="https://www.openshift.com/app/account/new" title="注册界面" target="_blank" rel="noopener">SIGN UP FOR FREE</a>,这就是我们注册OFS的地方.<br>界面如图所示:<br><img src="/images/3407149246-1.png" alt="3407149246"><br>自上而下分别是 邮件地址 , 密码 , 重复密码 , 验证码.<br>这里验证码下面是空白的,是因为我没有翻墙,若要获取验证码以注册OFS,请翻墙.当你所有信息填写完毕并点击了SIGN按钮,你会收到一封确认邮件.打开并点击”Verify Your Account”这个链接.<br>在跳转到OFS的注册确认界面之后, 点击”I Accept”进行下一步的操作.此时你就完成了注册.它会提示你创建第一个应用程序(Create your first application now),我们自然需要点进去.<br>界面跳转到新建应用程序的界面,此时你就可以创建你自己的应用程序了.<br>我们要迁移的Typecho是一个PHP程序,所以我们下拉,找到PHP 5.3,点击.<br><img src="/images/3615289931-1.png" alt="3615289931"><br>点击之后你会跳转到如下界面,依照图片所述进行操作,并点击 Create Application 按钮.<br><img src="/images/3059732140-1.png" alt="3059732140"></p>
+<p>在一段时间的创建后,你就会跳转到应用程序界面.点击我们新创建的应用程序.进入如下界面并点击Settings.<br><img src="/images/15405608024234.png" alt=""><br>Settings界面右侧有一个文本输入框,此时我们需要用PuttyGen生成一对SSH-2 Rsa秘钥以进行下一步操作,PuttyGen的操作我就不再过多进行阐述了.保存私钥文件为privkey.ppk,并复制公钥到输入框,点击Create.<br>在代码传输之前,我们需要添加一个MySql并获取各种信息以便于我们修改配置文件.<br>点击Settings旁边的Application选项卡, 找到下面的Datebase,并点击ADd MySQL 5.5,然后点击 Add Cartridge .静待操作完成.<br>操作完成后,我们会跳转回Application界面,这时候我们要记住Root User和Root Password,并点击下方的Tools and Support中的Add phpMyAdmin 4.0, 也是要点击Add Cartridge并等待.<br>操作完成继续跳转回APplication,打开URL后面的phpMyAdmin界面.写入之前记住的User和Password登录.在PHPMyAdmin(PMA)中找到导入选项.选择文件后导入.<br>也许会出现一些无关紧要的权限错误,不用管即可.记住PMA界面最上方的服务器之后的那串IP.<br>编辑博客根目录下的config.inc.php,拉到最后,修改数据库参数:<br>host改为服务器IP(不要带端口号), user和password用我们刚才记住的, port改成服务器的端口号.其他不变.<br>保存之后我们就可以上传代码了.<br>打开winscp, 填入Application界面下的Source Code下方的文本框中的文版到host name中,注意要将”ssh://“去掉.<br>点击Advanced界面,找到SSH-&gt;Authentication,将刚刚保存的privkey.ppk加载到Private Key file中.确认并点击Login.<br>在登录进行之后,会弹出一个确认窗口,点击Yes即可.然后会弹出一个找不到目录的错误,不用管,OK掉.<br>然后我们就会成功进入应用的管理.打开右侧窗口的app-root-&gt;runtime-&gt;repo,这个目录下有一个index.php,删掉它.<br>然后将我们的代码全部上传到上面.就大功告成了!接下来你就可以访问上面的php-xxx-.ehcloud.com来访问你的博客了!<br>若出现Error establishing a database connection, 则是数据库配置出错.检查config.inc.php和sql来排错.<br>访问博客会出现很奇怪的状况,不要担心,进入后台,更改博客的地址为新的地址,就ok啦!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://oyami-srk.github.io/2016/07/20/将Typecho博客迁移至Openshift/" data-id="cjno4zxxz001t5jfbqh631h07" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂文/">杂文</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/21/主机已从Vultr迁移到Budgetvm(本站不推荐使用IE浏览)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          主机已从Vultr迁移到Budgetvm(本站不推荐使用IE浏览)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/14/我的童年,-我是如何进入计算机的大门的/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">我的童年, 我是如何进入计算机的大门的</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DirectX学习笔记/">DirectX学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小型项目/">小型项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数理逻辑/">数理逻辑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认分类/">默认分类</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DirectX/">DirectX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息学/">信息学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图形学/">图形学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/折腾/">折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数理逻辑/">数理逻辑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂文/">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评测/">评测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通知/">通知</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DirectX/" style="font-size: 14px;">DirectX</a> <a href="/tags/信息学/" style="font-size: 16px;">信息学</a> <a href="/tags/图形学/" style="font-size: 14px;">图形学</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/折腾/" style="font-size: 12px;">折腾</a> <a href="/tags/数理逻辑/" style="font-size: 16px;">数理逻辑</a> <a href="/tags/杂文/" style="font-size: 18px;">杂文</a> <a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/通知/" style="font-size: 20px;">通知</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/21/关于博客暂时停机的声明/">关于博客暂时停机的声明</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/16/Lambda初级简介---组合子演算/">Lambda初级简介 - 组合子演算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/14/Lambda初级简介---Y组合子/">Lambda初级简介 - Y组合子</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/12/Lambda初级简介---逻辑运算/">Lambda初级简介 - 逻辑运算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/10/Lambda初级简介---邱奇数/">Lambda初级简介 - 邱奇数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Shiroko<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

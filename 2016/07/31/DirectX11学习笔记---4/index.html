@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>DirectX11学习笔记 - 4 | 空白酱的蒟蒻心得</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DirectX11学习笔记[4]Author: OyaKti(SRK)Date: 2016/7/29-31 Direct2D进阶 贴图与精灵">
+<meta name="keywords" content="编程,DirectX,图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DirectX11学习笔记 - 4">
+<meta property="og:url" content="https://oyami-srk.github.io/2016/07/31/DirectX11学习笔记---4/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="DirectX11学习笔记[4]Author: OyaKti(SRK)Date: 2016/7/29-31 Direct2D进阶 贴图与精灵">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405614293073.jpg">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405613578843.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405614079391.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405613421877.png">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15405613290988.png">
+<meta property="og:updated_time" content="2018-10-26T14:19:21.919Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DirectX11学习笔记 - 4">
+<meta name="twitter:description" content="DirectX11学习笔记[4]Author: OyaKti(SRK)Date: 2016/7/29-31 Direct2D进阶 贴图与精灵">
+<meta name="twitter:image" content="https://oyami-srk.github.io/images/15405614293073.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="空白酱的蒟蒻心得" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">空白酱的蒟蒻心得</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">在辣鸡的领域摸爬滚打</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://oyami-srk.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DirectX11学习笔记---4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/31/DirectX11学习笔记---4/" class="article-date">
+  <time datetime="2016-07-31T10:08:00.000Z" itemprop="datePublished">2016-07-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/DirectX学习笔记/">DirectX学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DirectX11学习笔记 - 4
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DirectX11学习笔记-4"><a href="#DirectX11学习笔记-4" class="headerlink" title="DirectX11学习笔记[4]"></a>DirectX<em>11</em>学习笔记[4]</h1><p>Author: <a href="http://blog.qvq.moe/" title="OyaKti的弱鸡心得" target="_blank" rel="noopener"><em>OyaKti(SRK)</em></a><br>Date: 2016/7/29-31<br><img src="/images/15405614293073.jpg" alt=""></p>
+<h2 id="Direct2D进阶-贴图与精灵"><a href="#Direct2D进阶-贴图与精灵" class="headerlink" title="Direct2D进阶 贴图与精灵"></a>Direct2D进阶 贴图与精灵</h2><hr>
+<a id="more"></a>
+<p><span id="home"></span></p>
+<p><a href="#1">1.纹理映射简介</a><br><a href="#2">2.纹理映射操作</a><br><a href="#3">3.封装精灵类</a><br>  <a href="#3-1">3-1.精灵类结构</a><br>  <a href="#3-2">3-2.精灵类实现</a></p>
+<ul>
+<li><h2 id="纹理映射简介"><a href="#纹理映射简介" class="headerlink" title="纹理映射简介"></a><span id="1">纹理映射简介</span></h2><p>  纹理通常是映射在图形物体表面的颜色值数据, 也可以是其他数据, 例如法线, 透明度等.<br>  不像opengl这种纯图形API只能用其他库来处理贴图(例如libpng, 我被这东西坑过), DirectX内置了一些贴图处理的方法, 我们可以使用D3DX11CreateTextureFromFile来从文件中加载贴图. 该函数原型如下.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HRESULT D3DX11CreateTextureFromFile(</span><br><span class="line">    ID3D11Device* pDevice,</span><br><span class="line">    LPCTSTR pSrcFile,</span><br><span class="line">    D3DX11_IMAGE_LOAD_INFO* pLoadInfo,</span><br><span class="line">    ID3DX11ThreadPump* pPump,</span><br><span class="line">    ID3D11Resource** ppTexture,</span><br><span class="line">    HRESULT* pHResult</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>  第一个参数是D3D设备驱动. 第二个则是文件路径. 第三个是图像的结构. 第四个是多线程pump, 异步加载用. 第五个是纹理对象地址. 第六个则是多线程返回值.<br>  Direct3D中主要有三种纹理类型:ID3D11Texture1D, ID3D11Texture2D, ID3D11Texture3D. 其中最常用的是2D贴图. 1D贴图和3D贴图为高级的特性, 不对其进行介绍.<br>  纹理贴图中的每个像素被称为纹理元素(Texel), 一个纹理元素在颜色映射中为一个颜色值, 一个颜色值通常是32位的RGBA格式. 若一张纹理贴图过大, 它消耗的显存和GPU是庞大的, Mip Maps就解决了这个问题. Mip分级机制使贴图分为不同大小, 决定使用贴图某种大小的因素则是视口和物体的距离. 当距离过远时, 则使用较低分辨率的贴图以减少消耗, 距离近则采用高分辨率的贴图来提升质量.<br>  下图显示了Mip不同压缩等级的预览:<br>  <img src="/images/15405613578843.png" alt=""></p>
+</li>
+</ul>
+<pre><code>[返回目录](#home)
+</code></pre><ul>
+<li><h2 id="纹理映射操作"><a href="#纹理映射操作" class="headerlink" title="纹理映射操作"></a><span id="2">纹理映射操作</span></h2><p>  通常2D贴图使用UV坐标表示贴图坐标, 而贴图坐标通常是和顶点位置坐标绑定在一起的, 这样子顶点的定义就如下了.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   typedef struct Vertex &#123;</span><br><span class="line">	XMFLOAT3 Position;</span><br><span class="line">	XMFLOAT2 Texture;</span><br><span class="line">&#125; Vertex;</span><br></pre></td></tr></table></figure>
+<p>  很显然, 顶点的数据结构发生了改变, 所以我们要重新定义顶点结构. 新的顶点结构如下.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   D3D11_INPUT_ELEMENT_DESC inputLayoutDesc[] = &#123;</span><br><span class="line">	&#123;</span><br><span class="line">		&quot;POSITION&quot;, 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		&quot;TEXTURE&quot;, 0, DXGI_FORMAT_R32G32_FLOAT, 0,sizeof(XMFLOAT3), D3D11_INPUT_PER_VERTEX_DATA, 0</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>  当然, 我们也要重新定义顶点数据, 顶点的位置坐标和UV坐标的关系如下:<br>  <img src="/images/15405614079391.png" alt=""></p>
+<p>  但是实际上, DX的UV坐标中的的V坐标是倒置的, 所以我们需要用1.0f去减去正常的V坐标, 才能得到正确的UV坐标, opengl就不这么蛋疼. 所以正确的顶点定义应该如下.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   Vertex vertexPos[] = &#123;</span><br><span class="line">	&#123; XMFLOAT3(0.5f, 0.5f, 0.5f), XMFLOAT2(1.0f, 0.0f) &#125;,</span><br><span class="line">	&#123; XMFLOAT3(0.5f, -0.5f, 0.5f), XMFLOAT2(1.0f, 1.0f) &#125;,</span><br><span class="line">	&#123; XMFLOAT3(-0.5f, -0.5f, 0.5f), XMFLOAT2(0.0f, 1.0f) &#125;,</span><br><span class="line">	&#123; XMFLOAT3(-0.5f, -0.5f, 0.5f), XMFLOAT2(0.0f, 1.0f) &#125;,</span><br><span class="line">	&#123; XMFLOAT3(-0.5f, 0.5f, 0.5f), XMFLOAT2(0.0f, 0.0f) &#125;,</span><br><span class="line">	&#123; XMFLOAT3(0.5f, 0.5f, 0.5f), XMFLOAT2(1.0f, 0.0f) &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>  照样加载顶点缓存, 不过缓存的大小可要记得修改为<code>sizeof(Vertex) * 6</code>.<br>  然后我们就要加载贴图了.<br>  我们需要一个着色器资源视图(ID3D11ShaderResourceView)和采样状态(ID3D11SamplerState)来加载贴图, 在全局中声明这两个变量.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   ID3D11ShaderResourceView *colorMap;</span><br><span class="line">ID3D11SamplerState *colorMap_Sampler;</span><br></pre></td></tr></table></figure>
+<p>  着色器资源视图用于访问资源, 就好比指针一样. 然后我们通过D3DX11CreateShaderResourceViewFromFile这个超长的函数来加载着色器资源视图.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   HRESULT res = D3DX11CreateShaderResourceViewFromFile(</span><br><span class="line">	this-&gt;d3dDevice,</span><br><span class="line">	&quot;Tex.dds&quot;,</span><br><span class="line">	NULL,</span><br><span class="line">	NULL,</span><br><span class="line">	&amp;colorMap,</span><br><span class="line">	NULL</span><br><span class="line">);</span><br><span class="line">if (FAILED(res))</span><br><span class="line">	return -1;</span><br></pre></td></tr></table></figure>
+<p>  D3DX11CreateShaderResourceViewFromFile的定义于D3DX11CreateTextureFromFile, 就不过多介绍了.<br>  加载贴图的最后一步就是创建采样状态, 其代码如下.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   D3D11_SAMPLER_DESC colorMapDesc;</span><br><span class="line">ZeroMemory(&amp;colorMapDesc, sizeof(D3D11_SAMPLER_DESC));</span><br><span class="line">colorMapDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;</span><br><span class="line">colorMapDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;</span><br><span class="line">colorMapDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;</span><br><span class="line">colorMapDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;</span><br><span class="line">colorMapDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;</span><br><span class="line">colorMapDesc.MaxLOD = D3D11_FLOAT32_MAX;</span><br><span class="line">HRESULT res = d3dDevice-&gt;CreateSamplerState(&amp;colorMapDesc, &amp;colorMap_Sampler);</span><br><span class="line">   if (FAILED(res))</span><br><span class="line">	return -1;</span><br></pre></td></tr></table></figure>
+<p>  采样状态用于访问一个纹理的采样状态, 而采样状态决定了纹理的绘制方式.<br>  采样状态描述符(D3D11_SAMPLER_DESC)的定义如下.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typedef struct D3D11_SAMPLER_DESC &#123;</span><br><span class="line">    D3D11_FILTER Filter;</span><br><span class="line">    D3D11_TEXTURE_ADDRESS_MODE AddressU;    //纹理地址U的地址模式</span><br><span class="line">    D3D11_TEXTURE_ADDRESS_MODE AddressV;    //纹理地址V的地址模式</span><br><span class="line">    D3D11_TEXTURE_ADDRESS_MODE AddressW;    //纹理地址W的地址模式</span><br><span class="line">    FLOAT MipLODBias;</span><br><span class="line">    UINT MaxAnisotropy;</span><br><span class="line">    D3D11_COMPARISON_FUNC ComparisonFunc;</span><br><span class="line">    FLOAT BorderColor[4];</span><br><span class="line">    FLOAT MinLOD;   //最小Mip级别</span><br><span class="line">    FLOAT MaxLOD;   //最大Mip级别</span><br><span class="line">    &#125; D3D11_SAMPLER_DESC;</span><br></pre></td></tr></table></figure>
+<p>  地址模式用于处理当所给UV坐标超出默认坐标的情况, WRAP为平铺, 一般我们就用这个.<br>  我们仅需添加两行代码和更改一行代码就能完成渲染,</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   d3dContext-&gt;PSSetShaderResources(0, 1, &amp;colorMap);</span><br><span class="line">d3dContext-&gt;PSSetSamplers(0, 1, &amp;colorMap_Sampler);</span><br><span class="line">d3dContext-&gt;Draw(6, 0);</span><br></pre></td></tr></table></figure>
+<p>  PSSetShaderResources和PSSetSamplers给像素着色器加载了资源和采样状态, 这两个函数的参数类似, 第一个参数为开始槽, 第二个则是数量, 第三个则是要加载的资源/采样状态的地址.<br>  然后就剩下了着色器.<br>  我们修改了代码中的顶点定义, 着色器也要做出同样的修改.<br>  全部着色器代码如下.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Texture2D colorMap :register(t0);</span><br><span class="line">SamplerState colorMap_Sampler :register(s0);</span><br><span class="line"></span><br><span class="line">struct Vertex &#123;</span><br><span class="line">	float4 pos : POSITION;</span><br><span class="line">	float2 tex : TEXTURE;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct Input &#123;</span><br><span class="line">	float4 pos : SV_POSITION;</span><br><span class="line">	float2 tex : TEXTURE;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Input VS_Main(Vertex vertex) &#123;</span><br><span class="line">	Input Out = (Input)0;</span><br><span class="line">	Out.pos = vertex.pos;</span><br><span class="line">	Out.tex = vertex.tex;</span><br><span class="line">	return Out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float4 PS_Main(Input input) : SV_TARGET &#123;</span><br><span class="line">	return colorMap.Sample(colorMap_Sampler, input.tex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  register用于绑定对象, t0表示第一个贴图, s0表示第一个取样状态, 就是这样! 贴图t0通过PSSetShaderResources传递, 而取样状态s0通过PSSetSamplers传递.</p>
+<p>  <a href="#home">返回目录</a></p>
+</li>
+<li><h2 id="精灵类结构"><a href="#精灵类结构" class="headerlink" title="精灵类结构"></a><span id="3-1">精灵类结构</span></h2><p>  精灵类作为dx4s的工具类被开发, 其设计如下图所示.<br>  <img src="/images/15405613421877.png" alt=""></p>
+</li>
+</ul>
+<pre><code>[返回目录](#home)
+</code></pre><ul>
+<li><h2 id="精灵类实现"><a href="#精灵类实现" class="headerlink" title="精灵类实现"></a><span id="3-2">精灵类实现</span></h2><p>  详见dx4s\utils\sprite2d.<br>  <img src="/images/15405613290988.png" alt=""></p>
+</li>
+</ul>
+<pre><code>[返回目录](#home)
+</code></pre><p>工程文件下载<a href="http://srk00.qvq.moe/usr/uploads/2016/07/757819174.zip" target="_blank" rel="noopener">04.zip</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://oyami-srk.github.io/2016/07/31/DirectX11学习笔记---4/" data-id="cjno4zxx000045jfb0uohbxdc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DirectX/">DirectX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图形学/">图形学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/03/PocketChip--9美元的卡片电脑和其外设评测/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PocketChip--9美元的卡片电脑和其外设评测
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/29/Directx学习笔记目录/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Directx学习笔记目录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DirectX学习笔记/">DirectX学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小型项目/">小型项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数理逻辑/">数理逻辑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/默认分类/">默认分类</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DirectX/">DirectX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/信息学/">信息学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图形学/">图形学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/折腾/">折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数理逻辑/">数理逻辑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂文/">杂文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评测/">评测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通知/">通知</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DirectX/" style="font-size: 14px;">DirectX</a> <a href="/tags/信息学/" style="font-size: 16px;">信息学</a> <a href="/tags/图形学/" style="font-size: 14px;">图形学</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/折腾/" style="font-size: 12px;">折腾</a> <a href="/tags/数理逻辑/" style="font-size: 16px;">数理逻辑</a> <a href="/tags/杂文/" style="font-size: 18px;">杂文</a> <a href="/tags/编程/" style="font-size: 20px;">编程</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/通知/" style="font-size: 20px;">通知</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/21/关于博客暂时停机的声明/">关于博客暂时停机的声明</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/16/Lambda初级简介---组合子演算/">Lambda初级简介 - 组合子演算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/14/Lambda初级简介---Y组合子/">Lambda初级简介 - Y组合子</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/12/Lambda初级简介---逻辑运算/">Lambda初级简介 - 逻辑运算</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/10/Lambda初级简介---邱奇数/">Lambda初级简介 - 邱奇数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Shiroko<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
