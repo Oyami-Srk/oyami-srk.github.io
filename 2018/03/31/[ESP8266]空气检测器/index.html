@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Talk is cheap, show me the codes.">
+<meta name="keywords" content="编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[ESP8266]空气检测器">
+<meta property="og:url" content="https://oyami-srk.github.io/2018/03/31/[ESP8266]空气检测器/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="Talk is cheap, show me the codes.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-31T15:25:29.776Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[ESP8266]空气检测器">
+<meta name="twitter:description" content="Talk is cheap, show me the codes.">
+
+
+
+
+
+
+  <link rel="canonical" href="https://oyami-srk.github.io/2018/03/31/[ESP8266]空气检测器/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[ESP8266]空气检测器 | 空白酱的蒟蒻心得</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">空白酱的蒟蒻心得</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">在辣鸡的领域摸爬滚打</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2018/03/31/[ESP8266]空气检测器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shiroko">
+      <meta itemprop="description" content="一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空白酱的蒟蒻心得">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[ESP8266]空气检测器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-31 22:24:04" itemprop="dateCreated datePublished" datetime="2018-03-31T22:24:04+08:00">2018-03-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-31 23:25:29" itemprop="dateModified" datetime="2018-10-31T23:25:29+08:00">2018-10-31</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小型项目/" itemprop="url" rel="index"><span itemprop="name">小型项目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Talk is cheap, show me the codes.<br><a id="more"></a><br>瞎鸡儿写的一个用ESP8266开发板和SenseAir S8二氧化碳传感器, PMS5003ST做MQTT空气传感器的东西(病句警告)</p>
+<p>pms的代码是基于gayhub上改的</p>
+<p>由于是瞎写的所以代码逻辑混乱<br>放出来是因为闲的没事干</p>
+<blockquote>
+<p>main.cpp</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;SoftwareSerial.h&gt;</span><br><span class="line">#include &lt;ESP8266WiFi.h&gt;</span><br><span class="line">#include &lt;PubSubClient.h&gt;</span><br><span class="line">#include &quot;pms5003ST.h&quot;</span><br><span class="line"></span><br><span class="line">#define S8_RXPIN D6</span><br><span class="line">#define S8_TXPIN D5</span><br><span class="line">#define PMS_RXPIN D2</span><br><span class="line">//#define DT_RXPIN D5</span><br><span class="line">//#define DT_TXPIN D6</span><br><span class="line"></span><br><span class="line">SoftwareSerial S8(S8_RXPIN, S8_TXPIN);</span><br><span class="line">SoftwareSerial PMS_Serial(PMS_RXPIN, D0);</span><br><span class="line">//SoftwareSerial Data_Serial(DT_RXPIN, DT_TXPIN);</span><br><span class="line">PMS::DATA pms_data;</span><br><span class="line">PMS pms(PMS_Serial);</span><br><span class="line"></span><br><span class="line">const char *ssid = &quot;Wireless-2.4Ghz&quot;;</span><br><span class="line">const char *passwd = &quot;83885877&quot;;</span><br><span class="line">const char *mqtt_server = &quot;192.168.0.2&quot;;</span><br><span class="line">const char *mqtt_name = &quot;disktation&quot;;</span><br><span class="line"></span><br><span class="line">WiFiClient espClient;</span><br><span class="line">PubSubClient client(espClient);</span><br><span class="line"></span><br><span class="line">long lastMsg = 0;</span><br><span class="line">char msg[128];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* CO2 */</span><br><span class="line">byte command_read_co2[] = &#123;</span><br><span class="line">  0xFE, 0x44, 0x00, 0x08, 0x02, 0x9F, 0x25</span><br><span class="line">&#125;;</span><br><span class="line">byte response[] = &#123;0, 0, 0, 0, 0, 0, 0&#125;;</span><br><span class="line">int co2_value_scale = 1;</span><br><span class="line">unsigned long co2 = 0;</span><br><span class="line"></span><br><span class="line">bool co2_send_command(Stream *serial = &amp;S8,</span><br><span class="line">                      byte *cmd = command_read_co2,</span><br><span class="line">                      int cmd_len = 7,</span><br><span class="line">                      byte *resp = response,</span><br><span class="line">                      int resp_len = 7) &#123;</span><br><span class="line">  while (!serial-&gt;available()) &#123;</span><br><span class="line">    serial-&gt;write(cmd, cmd_len);</span><br><span class="line">    delay(50);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  int timeout = 0;</span><br><span class="line">  while (serial-&gt;available() &lt; 7) &#123;</span><br><span class="line">    timeout++;</span><br><span class="line">    if (timeout &gt; 10) &#123;</span><br><span class="line">      while (serial-&gt;available())</span><br><span class="line">        serial-&gt;read();</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">    delay(50);</span><br><span class="line">  &#125;</span><br><span class="line">  for (int i = 0; i &lt; resp_len; i++)</span><br><span class="line">    resp[i] = serial-&gt;read();</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">unsigned long co2_read_response(byte *resp = response, int scale = co2_value_scale) &#123;</span><br><span class="line">  return scale * (resp[3] * 256 + resp[4]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* Repackage */</span><br><span class="line"></span><br><span class="line">bool send_using_serial(Stream *serial, unsigned long co2, PMS::DATA *pms) &#123;</span><br><span class="line">  bool sent = false;</span><br><span class="line">  while (serial-&gt;available()) &#123;</span><br><span class="line">    serial-&gt;read();</span><br><span class="line">  &#125;</span><br><span class="line">  if (!serial-&gt;available()) &#123;</span><br><span class="line">    // Recog code</span><br><span class="line">    serial-&gt;write(0xAD);</span><br><span class="line">    serial-&gt;write(0x01);</span><br><span class="line">    // CO2 data</span><br><span class="line">    serial-&gt;write(0xD1);</span><br><span class="line">    serial-&gt;write((byte*)&amp;co2, sizeof(co2));</span><br><span class="line">    // pms data</span><br><span class="line">    serial-&gt;write(0xD2);</span><br><span class="line">    serial-&gt;write((byte*)pms, sizeof(PMS::DATA));</span><br><span class="line">    // EndofData</span><br><span class="line">    serial-&gt;write(0xF1);</span><br><span class="line">    serial-&gt;write(0xF1);</span><br><span class="line">    sent = true;</span><br><span class="line">  &#125;</span><br><span class="line">  return sent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* Network */</span><br><span class="line">void setup_wifi() &#123;</span><br><span class="line">  delay(100);</span><br><span class="line">  Serial.println(&quot;WiFi connecting...&quot;);</span><br><span class="line">  WiFi.begin(ssid, passwd);</span><br><span class="line">  while (WiFi.waitForConnectResult() != WL_CONNECTED) &#123;</span><br><span class="line">    Serial.println(&quot;Failed! Rebooting...&quot;);</span><br><span class="line">    delay(5000);</span><br><span class="line">    ESP.restart();</span><br><span class="line">  &#125;</span><br><span class="line">  Serial.println(&quot;WiFi Connected.&quot;);</span><br><span class="line">  delay(500);</span><br><span class="line">  Serial.print(&quot;IP Addr: &quot;);</span><br><span class="line">  Serial.println(WiFi.localIP());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void callback(char* topic, byte* payload, unsigned int length) &#123;</span><br><span class="line">  Serial.print(&quot;Command is : [&quot;);</span><br><span class="line">  Serial.print(topic);</span><br><span class="line">  int p = (char)payload[0] - &apos;0&apos;;</span><br><span class="line"></span><br><span class="line">  if (p == 0) &#123;</span><br><span class="line">    Serial.println(&quot;to show humidity!]&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (p == 1) &#123;</span><br><span class="line">    // digitalWrite(BUILTIN_LED, HIGH);</span><br><span class="line">    Serial.println(&quot; is to show temperature!] &quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  Serial.println();</span><br><span class="line">&#125; //end callback</span><br><span class="line"></span><br><span class="line">void reconnect() &#123;</span><br><span class="line">  // Loop until we&apos;re reconnected</span><br><span class="line">  while (!client.connected()) &#123;</span><br><span class="line">    Serial.print(&quot;Attempting MQTT connection...&quot;);</span><br><span class="line">    // Create a random client ID</span><br><span class="line">    String clientId = &quot;ESP8266Client-&quot;;</span><br><span class="line">    clientId += String(random(0xffff), HEX);</span><br><span class="line">    // Attempt to connect</span><br><span class="line">    //if you MQTT broker has clientID,username and password</span><br><span class="line">    //please change following line to    if (client.connect(clientId,userName,passWord))</span><br><span class="line">    if (client.connect(clientId.c_str())) &#123;</span><br><span class="line">      Serial.println(&quot;connected&quot;);</span><br><span class="line">      //once connected to MQTT broker, subscribe command if any</span><br><span class="line">      client.subscribe(&quot;OsoyooCommand&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      Serial.print(&quot;failed, rc=&quot;);</span><br><span class="line">      Serial.print(client.state());</span><br><span class="line">      Serial.println(&quot; try again in 5 seconds&quot;);</span><br><span class="line">      // Wait 6 seconds before retrying</span><br><span class="line">      delay(6000);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; //end reconnect()</span><br><span class="line"></span><br><span class="line">void setup() &#123;</span><br><span class="line">  Serial.begin(9600);</span><br><span class="line">  Serial.println(&quot;Initialization --Begin--&quot;);</span><br><span class="line">  // Actual init process;</span><br><span class="line">  setup_wifi();</span><br><span class="line">  client.setServer(mqtt_server, 1883);</span><br><span class="line">  client.setCallback(callback);</span><br><span class="line">  Serial.println(&quot;Initialization --Done--&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void publish_it(unsigned long value, const char *name) &#123;</span><br><span class="line">  char addr_buf[32];</span><br><span class="line">  sprintf(addr_buf, &quot;Air/%s&quot;, name);</span><br><span class="line">  char buf[32];</span><br><span class="line">  sprintf(buf, &quot;%ld&quot;, value);</span><br><span class="line">  if (client.publish(addr_buf, buf))</span><br><span class="line">    Serial.println(&quot;ed!&quot;);</span><br><span class="line">  else</span><br><span class="line">    Serial.println(&quot; Failed...&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void publish_it_float(float value, const char *name, int dig) &#123;</span><br><span class="line">  char addr_buf[32];</span><br><span class="line">  sprintf(addr_buf, &quot;Air/%s&quot;, name);</span><br><span class="line">  char buf[32];</span><br><span class="line">  sprintf(buf, &quot;%.*f&quot;, dig, value);</span><br><span class="line">  if (client.publish(addr_buf, buf))</span><br><span class="line">    Serial.println(&quot;ed!&quot;);</span><br><span class="line">  else</span><br><span class="line">    Serial.println(&quot; Failed...&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void loop() &#123;</span><br><span class="line">  // put your main code here, to run repeatedly:</span><br><span class="line">  /*</span><br><span class="line">    Data_Serial.begin(9600);</span><br><span class="line">    //send_using_serial(&amp;Data_Serial, co2, &amp;pms_data);</span><br><span class="line">    delay(5000);</span><br><span class="line">    if(Data_Serial.available())</span><br><span class="line">      Data_Serial.println(&quot;Hello!&quot;);</span><br><span class="line">    Data_Serial.end();</span><br><span class="line">    Serial.println(&quot;Sent.&quot;);</span><br><span class="line">  */</span><br><span class="line">  if (!client.connected())</span><br><span class="line">    reconnect();</span><br><span class="line">  client.loop();</span><br><span class="line">  long now = millis();</span><br><span class="line">  if (now - lastMsg &gt; 2000) &#123;</span><br><span class="line">    lastMsg = now;</span><br><span class="line">    // Read co2</span><br><span class="line">    S8.begin(9600);</span><br><span class="line">    S8.flush();</span><br><span class="line">    co2 = 0;</span><br><span class="line">    if (co2_send_command()) &#123;</span><br><span class="line">      co2 = co2_read_response();</span><br><span class="line">      Serial.println(co2);</span><br><span class="line">    &#125;</span><br><span class="line">    S8.end();</span><br><span class="line"></span><br><span class="line">    // Read pms</span><br><span class="line">    PMS_Serial.begin(9600);</span><br><span class="line">    PMS_Serial.flush();</span><br><span class="line">    if (pms.read(pms_data, 5000)) &#123;</span><br><span class="line">      Serial.println((float)pms_data.TEMP / 10.0f);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      memset(&amp;pms_data, 0, sizeof(PMS::DATA));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    publish_it(co2, &quot;CO2&quot;);</span><br><span class="line">    publish_it_float(pms_data.TEMP / 10.0f, &quot;TEMP&quot;, 1);</span><br><span class="line">    publish_it_float(pms_data.HCHO / 1000.0f, &quot;HCHO&quot;, 3);</span><br><span class="line">    publish_it_float(pms_data.HUMD / 10.0f, &quot;HUMD&quot;, 1);</span><br><span class="line">    publish_it(pms_data.PM_FE_UG_1_0, &quot;PM1.0-FE&quot;);</span><br><span class="line">    publish_it(pms_data.PM_FE_UG_2_5, &quot;PM2.5-FE&quot;);</span><br><span class="line">    publish_it(pms_data.PM_FE_UG_10_0, &quot;PM10-FT&quot;);</span><br><span class="line">    publish_it(pms_data.PM_AE_UG_1_0, &quot;PM2.5&quot;);</span><br><span class="line">    publish_it(pms_data.PM_AE_UG_2_5, &quot;PM2.5&quot;);</span><br><span class="line">    publish_it(pms_data.PM_AE_UG_10_0, &quot;PM10&quot;);</span><br><span class="line">    publish_it(pms_data.ABOVE_0dot3_um, &quot;&gt;0.3um&quot;);</span><br><span class="line">    publish_it(pms_data.ABOVE_0dot5_um, &quot;&gt;0.5um&quot;);</span><br><span class="line">    publish_it(pms_data.ABOVE_1dot0_um, &quot;&gt;1.0um&quot;);</span><br><span class="line">    publish_it(pms_data.ABOVE_2dot5_um, &quot;&gt;2.5um&quot;);</span><br><span class="line">    publish_it(pms_data.ABOVE_5dot0_um, &quot;&gt;5.0um&quot;);</span><br><span class="line">    publish_it(pms_data.ABOVE_10_um, &quot;&gt;10um&quot;);</span><br><span class="line"></span><br><span class="line">    PMS_Serial.end();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>pms5003ST.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#ifndef PMS_H</span><br><span class="line">#define PMS_H</span><br><span class="line"></span><br><span class="line">#include &quot;Stream.h&quot;</span><br><span class="line"></span><br><span class="line">class PMS</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  struct DATA &#123;</span><br><span class="line">    // Factory environment </span><br><span class="line">    uint16_t PM_FE_UG_1_0;</span><br><span class="line">    uint16_t PM_FE_UG_2_5;</span><br><span class="line">    uint16_t PM_FE_UG_10_0;</span><br><span class="line"></span><br><span class="line">    // Atmospheric environment</span><br><span class="line">    uint16_t PM_AE_UG_1_0;</span><br><span class="line">    uint16_t PM_AE_UG_2_5;</span><br><span class="line">    uint16_t PM_AE_UG_10_0;</span><br><span class="line"></span><br><span class="line">    // ST</span><br><span class="line">    uint16_t ABOVE_0dot3_um;</span><br><span class="line">    uint16_t ABOVE_0dot5_um;</span><br><span class="line">    uint16_t ABOVE_1dot0_um;</span><br><span class="line">    uint16_t ABOVE_2dot5_um;</span><br><span class="line">    uint16_t ABOVE_5dot0_um;</span><br><span class="line">    uint16_t ABOVE_10_um;</span><br><span class="line"></span><br><span class="line">    // ST 2</span><br><span class="line">    uint16_t HCHO;</span><br><span class="line">    uint16_t TEMP;</span><br><span class="line">    uint16_t HUMD;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  enum STATUS &#123; STATUS_WAITING, STATUS_OK &#125;;</span><br><span class="line"></span><br><span class="line">  PMS(Stream&amp;);</span><br><span class="line"></span><br><span class="line">  bool read(DATA&amp; data, uint16_t timeout = 0);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  uint8_t _payload[30];</span><br><span class="line">  Stream* _stream;</span><br><span class="line">  DATA* _data;</span><br><span class="line">  STATUS _status;</span><br><span class="line">  </span><br><span class="line">  uint8_t _index = 0;</span><br><span class="line">  uint16_t _frameLen;</span><br><span class="line">  uint16_t _checksum;</span><br><span class="line">  uint16_t _calculatedChecksum;</span><br><span class="line"></span><br><span class="line">  void loop();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>pms5003ST.cpp</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;Arduino.h&quot;</span><br><span class="line">#include &quot;pms5003ST.h&quot;</span><br><span class="line"></span><br><span class="line">PMS::PMS(Stream&amp; stream)</span><br><span class="line">&#123;</span><br><span class="line">  this-&gt;_stream = &amp;stream;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Non-blocking function for parse response.</span><br><span class="line">// If you want to wait for the full response (blocking), specify timeout parameter (1000ms is sufficient). This makes it easier to work in passive mode.</span><br><span class="line">bool PMS::read(DATA&amp; data, uint16_t timeout)</span><br><span class="line">&#123;</span><br><span class="line">  _data = &amp;data;</span><br><span class="line">  if (timeout &gt; 0)</span><br><span class="line">  &#123;</span><br><span class="line">    uint32_t start = millis();</span><br><span class="line">    do</span><br><span class="line">    &#123;</span><br><span class="line">      loop();</span><br><span class="line">      if (_status == STATUS_OK) break;</span><br><span class="line">    &#125; while (millis() - start &lt; timeout);</span><br><span class="line">  &#125;</span><br><span class="line">  else</span><br><span class="line">  &#123;</span><br><span class="line">    loop();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return _status == STATUS_OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void PMS::loop()</span><br><span class="line">&#123;</span><br><span class="line">  _status = STATUS_WAITING;</span><br><span class="line">  if (_stream-&gt;available())</span><br><span class="line">  &#123;</span><br><span class="line">    uint8_t ch = _stream-&gt;read();</span><br><span class="line"></span><br><span class="line">    switch (_index)</span><br><span class="line">    &#123;</span><br><span class="line">    case 0:</span><br><span class="line">      if (ch != 0x42)</span><br><span class="line">      &#123;</span><br><span class="line">        return;</span><br><span class="line">      &#125;</span><br><span class="line">      _calculatedChecksum = ch;</span><br><span class="line">      break;</span><br><span class="line"></span><br><span class="line">    case 1:</span><br><span class="line">      if (ch != 0x4D)</span><br><span class="line">      &#123;</span><br><span class="line">        _index = 0;</span><br><span class="line">        return;</span><br><span class="line">      &#125;</span><br><span class="line">      _calculatedChecksum += ch;</span><br><span class="line">      break;</span><br><span class="line"></span><br><span class="line">    case 2:</span><br><span class="line">      _calculatedChecksum += ch;</span><br><span class="line">      _frameLen = ch &lt;&lt; 8;</span><br><span class="line">      break;</span><br><span class="line"></span><br><span class="line">    case 3:</span><br><span class="line">      _frameLen |= ch;</span><br><span class="line">      // Unsupported sensor, different frame length, transmission error e.t.c.</span><br><span class="line">      if (_frameLen != 2 * 17 + 2)</span><br><span class="line">      &#123;</span><br><span class="line">        _index = 0;</span><br><span class="line">        return;</span><br><span class="line">      &#125;</span><br><span class="line">      _calculatedChecksum += ch;</span><br><span class="line">      break;</span><br><span class="line"></span><br><span class="line">    default:</span><br><span class="line">      if (_index == _frameLen + 2)</span><br><span class="line">      &#123;</span><br><span class="line">        _checksum = ch &lt;&lt; 8;</span><br><span class="line">      &#125;</span><br><span class="line">      else if (_index == _frameLen + 2 + 1)</span><br><span class="line">      &#123;</span><br><span class="line">        _checksum |= ch;</span><br><span class="line"></span><br><span class="line">        if (_calculatedChecksum == _checksum)</span><br><span class="line">        &#123;</span><br><span class="line">          _status = STATUS_OK;</span><br><span class="line"></span><br><span class="line">          // Factory environment.</span><br><span class="line">          _data-&gt;PM_FE_UG_1_0 = makeWord(_payload[0], _payload[1]);</span><br><span class="line">          _data-&gt;PM_FE_UG_2_5 = makeWord(_payload[2], _payload[3]);</span><br><span class="line">          _data-&gt;PM_FE_UG_10_0 = makeWord(_payload[4], _payload[5]);</span><br><span class="line"></span><br><span class="line">          // Atmospheric environment.</span><br><span class="line">          _data-&gt;PM_AE_UG_1_0 = makeWord(_payload[6], _payload[7]);</span><br><span class="line">          _data-&gt;PM_AE_UG_2_5 = makeWord(_payload[8], _payload[9]);</span><br><span class="line">          _data-&gt;PM_AE_UG_10_0 = makeWord(_payload[10], _payload[11]);</span><br><span class="line"></span><br><span class="line">          _data-&gt;ABOVE_0dot3_um = makeWord(_payload[12], _payload[13]);</span><br><span class="line">          _data-&gt;ABOVE_0dot5_um = makeWord(_payload[14], _payload[15]);</span><br><span class="line">          _data-&gt;ABOVE_1dot0_um = makeWord(_payload[16], _payload[17]);</span><br><span class="line">          _data-&gt;ABOVE_2dot5_um = makeWord(_payload[18], _payload[19]);</span><br><span class="line">          _data-&gt;ABOVE_5dot0_um = makeWord(_payload[20], _payload[21]);</span><br><span class="line">          _data-&gt;ABOVE_10_um = makeWord(_payload[22], _payload[23]);</span><br><span class="line"></span><br><span class="line">          _data-&gt;HCHO = makeWord(_payload[24], _payload[25]);</span><br><span class="line">          _data-&gt;TEMP = makeWord(_payload[26], _payload[27]);</span><br><span class="line">          _data-&gt;HUMD = makeWord(_payload[28], _payload[29]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        _index = 0;</span><br><span class="line">        return;</span><br><span class="line">      &#125;</span><br><span class="line">      else</span><br><span class="line">      &#123;</span><br><span class="line">        _calculatedChecksum += ch;</span><br><span class="line">        uint8_t payloadIndex = _index - 4;</span><br><span class="line"></span><br><span class="line">        // Payload is common to all sensors (first 2x6 bytes).</span><br><span class="line">        if (payloadIndex &lt; sizeof(_payload))</span><br><span class="line">        &#123;</span><br><span class="line">          _payload[payloadIndex] = ch;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    _index++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag"># 编程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/23/在不支持DOCKER的群晖NAS上安装HomeAssistant/" rel="next" title="在不支持DOCKER的群晖NAS上安装HomeAssistant">
+                <i class="fa fa-chevron-left"></i> 在不支持DOCKER的群晖NAS上安装HomeAssistant
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/29/未完成Pixiv客户端代码摘抄/" rel="prev" title="未完成Pixiv客户端代码摘抄">
+                未完成Pixiv客户端代码摘抄 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shiroko</p>
+              <p class="site-description motion-element" itemprop="description">一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"> &copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shiroko</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

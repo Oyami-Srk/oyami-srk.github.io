@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="数据结构与算法 - 树(Day2)子又生孙, 孙又生子, 子子孙孙无穷尽也.">
+<meta name="keywords" content="编程,信息学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[OI 基础] 数据结构与算法 - 树">
+<meta property="og:url" content="https://oyami-srk.github.io/2017/07/27/[OI基础]数据结构与算法---树/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="数据结构与算法 - 树(Day2)子又生孙, 孙又生子, 子子孙孙无穷尽也.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-31T15:25:35.329Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[OI 基础] 数据结构与算法 - 树">
+<meta name="twitter:description" content="数据结构与算法 - 树(Day2)子又生孙, 孙又生子, 子子孙孙无穷尽也.">
+
+
+
+
+
+
+  <link rel="canonical" href="https://oyami-srk.github.io/2017/07/27/[OI基础]数据结构与算法---树/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[OI 基础] 数据结构与算法 - 树 | 空白酱的蒟蒻心得</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">空白酱的蒟蒻心得</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">在辣鸡的领域摸爬滚打</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2017/07/27/[OI基础]数据结构与算法---树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shiroko">
+      <meta itemprop="description" content="一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空白酱的蒟蒻心得">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[OI 基础] 数据结构与算法 - 树
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-27 15:10:43" itemprop="dateCreated datePublished" datetime="2017-07-27T15:10:43+08:00">2017-07-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-31 23:25:35" itemprop="dateModified" datetime="2018-10-31T23:25:35+08:00">2018-10-31</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NOIP/" itemprop="url" rel="index"><span itemprop="name">NOIP</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="数据结构与算法-树-Day2"><a href="#数据结构与算法-树-Day2" class="headerlink" title="数据结构与算法 - 树(Day2)"></a>数据结构与算法 - 树(Day2)</h1><p><em>子又生孙, 孙又生子, 子子孙孙无穷尽也.</em></p>
+<a id="more"></a>
+<hr>
+<ul>
+<li><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><p>​    一对多的层次关系的表示方法为树形结构.</p>
+<ul>
+<li><p>树的定义:</p>
+<ul>
+<li><p>树是由n(n&gt;=0)各节点组成的有限集合.</p>
+</li>
+<li><p>若n=0, 则为空树. </p>
+</li>
+<li><p>若n&gt;0, 则:</p>
+<ul>
+<li><p>有一个特定的节点为根节点(root)</p>
+<p>只有后继没有前驱</p>
+</li>
+</ul>
+<ul>
+<li><p>除根意外的其他节点都为树, 且互不相交.</p>
+</li>
+<li><p>每一个子树的根节点都有唯一前驱</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>树的概念:</p>
+<ul>
+<li>节点的度(Degree): 节点的子树个数</li>
+<li>树的度: 树的所有节点中最大的度数</li>
+<li>叶节点(Leaf): 度=0的节点</li>
+<li>父节点(Parent): 有子树的节点为其子树的根节点的父节点</li>
+<li>子节点(Chld): A节点为B节点的父节点, B节点则为A的子节点</li>
+<li>兄弟节点(Sibling): 具有同一个父节点的各节点彼此是兄弟节点</li>
+<li>路径: 从节点n1到nk的路径为一个节点序列{n1,n2,…,nk}, ni为ni+1的父节点.</li>
+<li>路径长度: 路径所包含边的个数为路径长度</li>
+<li>祖先节点(Ancestor): 沿树根到某一节点路径上的所有节点都是该节点的祖先节点</li>
+<li>子孙节点(Descendant): 某一节点的子树中的所有节点都是这个节点的子孙</li>
+<li>节点层次(Level): 规定根节点在1层, 其他任意节点的整数是其父节点的层数+1</li>
+<li>树的深度(Depth): 树中所有节点中的最大层次是该树的深度</li>
+<li>有序树/无序树: 若结点的子树有次序排列，且先后次序不能互换，这样的树称为有序树，反之为无序树。</li>
+</ul>
+</li>
+<li><p>双亲表示法(顺序储存):</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_TREE_SIZE 100</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Ptnode</span>&#123;</span></span><br><span class="line">	TelemType data;</span><br><span class="line">	<span class="keyword">int</span> parent;	<span class="comment">//双亲位置域</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PTree</span>&#123;</span></span><br><span class="line">  Ptnode nodes[MAX_TREE_SIZE];</span><br><span class="line">  <span class="keyword">int</span> n;	<span class="comment">//the number of nodes;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点: 便于涉及双亲的操作</li>
+<li>缺点: 求节点的孩子时需要遍历整颗树</li>
+<li>示意图:略</li>
+</ul>
+</li>
+<li><p>孩子表示法距离:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_TREE_SIZE 100</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Ptnode</span>&#123;</span></span><br><span class="line">  TelemType data;</span><br><span class="line">  <span class="keyword">int</span> child[m]	<span class="comment">//store the position of children</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Ptree</span>&#123;</span></span><br><span class="line">  Ptnode nodes[MAX_TREE_SIZE];</span><br><span class="line">  <span class="keyword">int</span> n;	<span class="comment">//the number of nodes</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点: 便于涉及孩子的操作.</li>
+<li>缺点: 采用的是同构的节点(节点中孩子空间个数取决于孩子最多的树的孩子个数, 造成不必要的浪费), 空间浪费. 求双亲不方便.<ul>
+<li>示意图: 略</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>孩子兄弟表示法:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span>&#123;</span></span><br><span class="line">  ELemType data;</span><br><span class="line">  <span class="keyword">int</span> firstchild, nextsibling;	<span class="comment">//第一个孩子和右边的兄弟.</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">CSNode t[MAX_TREE_SIZE];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点: 节约空间</li>
+<li>示意图: 略</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
+<li><p>二叉树的基本概念:</p>
+<ul>
+<li>度数=2的树, 每个节点最多有两个孩子</li>
+<li>五种基本形态: (图略)<ul>
+<li>空二叉树</li>
+<li>仅有根节点</li>
+<li>右子树为空</li>
+<li>左子树为空</li>
+<li>左右子树都不为空</li>
+</ul>
+</li>
+<li><p>二叉树为有序树</p>
+</li>
+<li><p><strong>二叉树性质</strong>:</p>
+<ul>
+<li>二叉树的第i层最多有2^(i-1)个节点</li>
+<li>深度为k的二叉树最多有2^(k)-1个节点</li>
+<li>对任意一颗二叉树, 若其叶节点数为n0, 度为2的节点数为n2, 则一定满足n0=n2+1</li>
+<li>具有n个节点的完全二叉树的深度为floor(log2(n))+1</li>
+<li>对于一颗n个节点的完全二叉树, 对任意一个节点(编号为1), 有:<ul>
+<li>若i=1, 则节点i为根节点, 无父节点. 若i&gt;1, 则其父节点的编号为i/2 (floor取整)</li>
+<li>若2*i&gt;n, 则节点i无左孩子(无子树),</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>满二叉树:</p>
+<ul>
+<li>深度为k且有2^k - 1个节点的二叉树为完全二叉树</li>
+</ul>
+</li>
+<li><p>完全二叉树:</p>
+<ul>
+<li>深度为k, 有n个节点的二叉树当且仅当其每个节点都与深度为k的满二叉树中编号从1到n的节点一一对应时, 则为完全二叉树.</li>
+<li>完全二叉树不一定为满二叉树, 满二叉树一定为完全二叉树</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>二叉树的存储结构:</p>
+<ul>
+<li><p>数组顺序存储(完全二叉树)</p>
+</li>
+<li><p>顺序存储:</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">  ElemType data;</span><br><span class="line">  <span class="keyword">int</span> lchild;</span><br><span class="line">  <span class="keyword">int</span> rchild;</span><br><span class="line">&#125;;</span><br><span class="line">node tree[MAX_TREE_SIZE];</span><br><span class="line"><span class="keyword">int</span> bt;	<span class="comment">//根节点位置</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>二叉树的遍历:</p>
+<ul>
+<li><p>先(根)序遍历: 先访问根</p>
+<ul>
+<li>若二叉树为空, 则空操作. 否则:<ul>
+<li>访问根节点</li>
+<li>先序遍历左子树</li>
+<li>先序遍历右子树</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">proorder</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!i)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d "</span>, v[i]);</span><br><span class="line">  proorder(l[i]);</span><br><span class="line">  proorder(r[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>中(根)序遍历: 中间访问根</p>
+<ul>
+<li>若二叉树为空, 则空操作, 否则:<ul>
+<li>中序遍历左子树</li>
+<li>访问根节点</li>
+<li>后序遍历右子树</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inorder</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!i)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  inorder(l[i]);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d "</span>, v[i]);</span><br><span class="line">  <span class="comment">//do something else;</span></span><br><span class="line">  inorder(r[i];)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>后(根)序遍历: 最后访问根</p>
+<ul>
+<li>若二叉树为空, 则空操作, 否则:<ul>
+<li>后序遍历左子树</li>
+<li>后序遍历右子树</li>
+<li>访问根节点</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sucorder</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!i)</span><br><span class="line">  	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  sucorder(l[i]);</span><br><span class="line">  sucorder(r[i]);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d "</span>, v[i]);</span><br><span class="line">  <span class="comment">//do something else;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>树的遍历</p>
+<ul>
+<li>先根遍历<ul>
+<li>访问树的根节点</li>
+<li>依次先根遍历每颗子树</li>
+</ul>
+</li>
+<li>后根遍历<ul>
+<li>依次后根遍历每颗子树</li>
+<li>访问树的根节点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h2 id="树和森林与二叉树的转化"><a href="#树和森林与二叉树的转化" class="headerlink" title="树和森林与二叉树的转化"></a>树和森林与二叉树的转化</h2><ul>
+<li>树与二叉树的转化<ol>
+<li>在树中各元素(堂兄弟除外)之间加一根连线</li>
+<li>对于任意节点保留与他第一个孩子的连线, 删除其他连线</li>
+<li>将树整体顺时针旋转45°</li>
+<li>树转化为二叉树根节点无右子树</li>
+</ol>
+</li>
+<li>森林与二叉树的转化<ol>
+<li>若F={T1,T2…Tm}是森林, 则</li>
+<li>森林中的每颗树依次转化为二叉树, 并链接成上一个树的根的右子树.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h2 id="二叉树的应用"><a href="#二叉树的应用" class="headerlink" title="二叉树的应用"></a>二叉树的应用</h2><ul>
+<li><p>二叉排序树(二叉查找树/二叉搜索树)为动态树表, 支持高效的查找和插入删除操作</p>
+<ul>
+<li>该树或一颗空树, 或有如下特性的二叉树:<ul>
+<li>若根节点的左子树非空, 则左子树中所有节点的值均小于根节点值</li>
+<li>若根节点的右子树非空, 则右子树中所有节点的值均大于根节点值</li>
+<li>他的左右子树也分别为二叉排序树</li>
+</ul>
+</li>
+<li>高效方法: 转化为平衡二叉树</li>
+<li>​</li>
+</ul>
+</li>
+<li><p>最优二叉树(哈夫曼树/最优搜索树)</p>
+<ul>
+<li>该树为带权路径长度最短的二叉树</li>
+<li>每个叶节点带一个权值w, 且根到叶节点i的路径长度为L, 则树的带权路径长度为树中所有叶节点的权值与路径长度的乘积的总和</li>
+<li>特性<ul>
+<li>当叶子上的权值均相同时, 完全二叉树一定是最优二叉树. 否则完全二叉树不一定是最优二叉树</li>
+<li>在最优二叉树中, 权值越大的叶子离根越近</li>
+<li>最优二叉树的形态不唯一, 但Wpl最小.</li>
+</ul>
+</li>
+<li>构造方法<ul>
+<li>找出最小的两个权值, 合并并作为左右子树, 根节点比较值为左右权值和</li>
+<li>根节点视为叶节点参与第一步, 直到完全合并</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>哈夫曼编码</p>
+<ul>
+<li>哈夫曼编码为哈夫曼树在电讯通讯中的应用之一</li>
+<li>假定需要传送的电文是CDABB, 设A00,B01,C10,D11.</li>
+<li>可翻译CDABB为1011000101</li>
+<li>利用不等长编码将出现频率高的字母分配为短码, 频率低的字母分配为长码</li>
+<li>要求短码不能为长码的前缀</li>
+<li>生成这种编码的方法为哈夫曼树(右子树为1, 左子树为0, 叶子权值为出现频率, 到叶子的路径二进制和则为该字符的二进制编码)</li>
+</ul>
+</li>
+<li><p>并查集</p>
+<ul>
+<li>树形的数据结构, 用于处理一些不相交集合(Disjoint Sets)的合并及查询问题. 常常在使用中以森林来表示.</li>
+<li>初始化<ul>
+<li>把每个点所在集合初始化为其自身(时间复杂度O(n))</li>
+</ul>
+</li>
+<li>查找<ul>
+<li>查找元素所在的集合, 即根节点</li>
+</ul>
+</li>
+<li>合并<ul>
+<li>将两个元素所在的集合合并为一个集合</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;=n;i++)father[i] = i; <span class="comment">//Init</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;	<span class="comment">//找根</span></span><br><span class="line">  <span class="keyword">if</span>(father[x] != x)</span><br><span class="line">    father[x] = find(father[x]);	<span class="comment">//路径压缩, 减少查询次数降低时间复杂度</span></span><br><span class="line">  <span class="keyword">return</span> father[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">unionn</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;	<span class="comment">//合并</span></span><br><span class="line">  x = find(x), y = find(y);</span><br><span class="line">  father[y] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;	<span class="comment">//判断是否是同集</span></span><br><span class="line">  x = find(x);</span><br><span class="line">  y = find(y);</span><br><span class="line">  <span class="keyword">if</span>(x==y)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><h2 id="二叉树相关代码"><a href="#二叉树相关代码" class="headerlink" title="二叉树相关代码"></a>二叉树相关代码</h2><h3 id="1-输出叶节点"><a href="#1-输出叶节点" class="headerlink" title="1.输出叶节点"></a>1.输出叶节点</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leaf</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!i)</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">if</span>(l[i]+r[i])</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  leaf(l[i]);</span><br><span class="line">  leaf(r[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-计算树高度"><a href="#2-计算树高度" class="headerlink" title="2. 计算树高度"></a>2. 计算树高度</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Height</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> i==<span class="number">0</span>?<span class="number">0</span>:max(Height(l[i]), Height(r[i])) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-已知先序和中序求后序"><a href="#3-已知先序和中序求后序" class="headerlink" title="3. 已知先序和中序求后序"></a>3. 已知先序和中序求后序</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> *s1, <span class="keyword">char</span> *s2, <span class="keyword">char</span> *s)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(n&lt;=<span class="number">0</span>)	<span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">int</span> p = <span class="built_in">strchr</span>(s2,s1[<span class="number">0</span>]) - s2;	<span class="comment">//根节点在中序遍历中的位置</span></span><br><span class="line">  build(p, s1+<span class="number">1</span>, s2, s);	<span class="comment">//L</span></span><br><span class="line">  build(n-p<span class="number">-1</span>, s1+p+<span class="number">1</span>, s2+p+<span class="number">1</span>, s+p);</span><br><span class="line">  s[n<span class="number">-1</span>] = s1[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-插入数据-到二叉排序树"><a href="#4-插入数据-到二叉排序树" class="headerlink" title="4. 插入数据    到二叉排序树"></a>4. 插入数据    到二叉排序树</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(x&lt;v[i])</span><br><span class="line">    <span class="keyword">if</span>(l[i])</span><br><span class="line">      insert(l[i],x);</span><br><span class="line">  	<span class="keyword">else</span></span><br><span class="line">      v[++p] = x, l[i] = p;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">if</span>(r[i])</span><br><span class="line">      insert(r[i],x);</span><br><span class="line">  	<span class="keyword">else</span></span><br><span class="line">      v[++p] = x, r[i] = p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag"># 编程</a>
+          
+            <a href="/tags/信息学/" rel="tag"># 信息学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/22/因子工作室正式成立/" rel="next" title="因子工作室正式成立">
+                <i class="fa fa-chevron-left"></i> 因子工作室正式成立
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/28/[OI-基础]-数据结构与算法---图的储存遍历及图的排序/" rel="prev" title="[OI 基础] 数据结构与算法 - 图的储存遍历及图的排序">
+                [OI 基础] 数据结构与算法 - 图的储存遍历及图的排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shiroko</p>
+              <p class="site-description motion-element" itemprop="description">一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构与算法-树-Day2"><span class="nav-number">1.</span> <span class="nav-text">数据结构与算法 - 树(Day2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#树"><span class="nav-number">1.1.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树"><span class="nav-number">1.2.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树和森林与二叉树的转化"><span class="nav-number">1.3.</span> <span class="nav-text">树和森林与二叉树的转化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树的应用"><span class="nav-number">1.4.</span> <span class="nav-text">二叉树的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树相关代码"><span class="nav-number">1.5.</span> <span class="nav-text">二叉树相关代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-输出叶节点"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.输出叶节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-计算树高度"><span class="nav-number">1.5.2.</span> <span class="nav-text">2. 计算树高度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-已知先序和中序求后序"><span class="nav-number">1.5.3.</span> <span class="nav-text">3. 已知先序和中序求后序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-插入数据-到二叉排序树"><span class="nav-number">1.5.4.</span> <span class="nav-text">4. 插入数据    到二叉排序树</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"> &copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shiroko</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

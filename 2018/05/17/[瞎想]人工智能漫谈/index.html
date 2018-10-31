@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Game begins;">
+<meta name="keywords" content="杂文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[瞎想]人工智能漫谈">
+<meta property="og:url" content="https://oyami-srk.github.io/2018/05/17/[瞎想]人工智能漫谈/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="Game begins;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-31T15:26:00.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[瞎想]人工智能漫谈">
+<meta name="twitter:description" content="Game begins;">
+
+
+
+
+
+
+  <link rel="canonical" href="https://oyami-srk.github.io/2018/05/17/[瞎想]人工智能漫谈/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[瞎想]人工智能漫谈 | 空白酱的蒟蒻心得</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">空白酱的蒟蒻心得</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">在辣鸡的领域摸爬滚打</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2018/05/17/[瞎想]人工智能漫谈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shiroko">
+      <meta itemprop="description" content="一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空白酱的蒟蒻心得">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[瞎想]人工智能漫谈
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-17 22:29:00" itemprop="dateCreated datePublished" datetime="2018-05-17T22:29:00+08:00">2018-05-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-31 23:26:00" itemprop="dateModified" datetime="2018-10-31T23:26:00+08:00">2018-10-31</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Game begins;</p>
+<a id="more"></a>
+<p>  传统来说，一直以来所认为的人工智能，指的是那种和人类具有相同或相似的智能的人工产物。也就是用稍微专业一点的话说是强人工智能。强人工智能，强就强在通用性上。试想人类的智能，你会算数，也会根据逻辑来推理一些事情，也会欣赏歌剧，识别出照片上的人。这些都是由你自己进行的， 而不需要更换大脑或者切换大脑里面的思维之类的事情，由一套智能系统就能完成一切的智能活动，这一套智能系统就可以被看做是具有通用性的。</p>
+<p>  而与强人工智能相对的，就是弱人工智能。弱人工智能，自然就是弱在不具有通用性上。相信在2018年，各位已经充分的见识过弱人工智能了。无论是常用的人脸识别，以图搜图，还是早就有的语音识别和机器翻译，近年来火爆的微软小冰、小黄鸡一类，更是弱人工智能的代表。这些弱人工智能，并不具备通用性。可能你跟微软小冰聊得很开心，她既能算数又能唱歌，但是这只是逻辑处理、任务分配的假象，本质上，微软小冰并不是一个独立的、单一的智能。不具备通用性的弱人工智能只会处理它分内的事情，让一个机器翻译系统去做图片识别，自然是不可取的。</p>
+<p>  目前在人工智能领域，取得发展，甚至大有成效的就是弱人工智能，网上传的沸沸扬扬的什么阿尔法狗，深度学习，都只是属于弱人工智能。</p>
+<p>  至于强人工智能，就是我这篇幻想所要只要表达的。强人工智能除了理工领域之外，对于哲学和人文学也具有相当大的作用和反作用。而我只要想表达的，是其在理工领域内的部分。</p>
+<p>  我相信，强人工智能不可计算，无法用计算模型模拟。这里说的不可计算，指的既是强人工智能无法得到确切的数学模型（而不是诸如堆砌神经网络产生的玄学智能），也是从无法通过抽象过程完全实现而不是模拟来说的不可计算。</p>
+<p>  人脑是电子层面的物理模型，不存在无法完全模拟的问题，也不会受到量子随机过程的影响。所以在物理层面上模拟人脑，是完全可以做到的。此外，人脑由神经元构成，受各种激素调节的影响，而神经元和激素完全可以用计算模型等价模拟，有些说法也说：”一个神经元就是一台差分机“，由此可见，在脑科学层面上模拟人脑也是可行的。事实上，无论是通过模拟物理，还是模拟神经元，这些在我眼里都不算是真正的人工智能。模拟终究是知其所然不知其所以然的折中方案，真正的人工智能，只有人工掌握了意识的确切数学模型才能实现，而不是通过设计神经网络或者物理模型。</p>
+<p>  想要在原理上实现强人工智能，我认为是不可能的。意识本身应该是不可被描述的，也无法被计算。纵然组成意识的一切事物都是可计算的，确切的。但是意识本身可能是不可计算的，模糊的。不过我对这点还无法确信，只是冥冥之中有所感。</p>
+<p>  我设想一个反人工智能的存在，如果一个人类从小时候就被机械性教育通过逻辑演算和数学来进行思考，那么是不是可以在人脑中构建以数学模型为基础的”人工“智能呢？这一点需要试验来佐证，可惜是永远无法实现的了。</p>
+<p>  终究我的一切幻想都基于一点：意识不可计算。</p>
+<p>  不过，意识不可计算是否只是人类的意识不可计算，而且终究什么是意识呢？人工智能的智能一定要是类似人类的智能吗？秃子悖论所展现的只不过是人类自身能力的限制罢了。人工智能，或者说基于计算的生命体，或许不需要类似”秃头“这样的模糊描述。不过谁知道呢。或许在宇宙的彼端，也有硅基生命试图创造碳基生命而苦于怎么通过化学反应来实现他们的逻辑呢……</p>
+<p>  小儿妄语，后日寻此定自嘲，录之以记，无他。勿阅勿听勿妄信，且行且看且珍惜。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/杂文/" rel="tag"># 杂文</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/16/Lambda初级简介---组合子演算/" rel="next" title="Lambda初级简介 - 组合子演算">
+                <i class="fa fa-chevron-left"></i> Lambda初级简介 - 组合子演算
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/21/关于博客暂时停机的声明/" rel="prev" title="关于博客暂时停机的声明">
+                关于博客暂时停机的声明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shiroko</p>
+              <p class="site-description motion-element" itemprop="description">一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"> &copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shiroko</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

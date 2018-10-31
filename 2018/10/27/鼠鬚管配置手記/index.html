@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="以下文字是用搜狗输入法完成输入的.">
+<meta name="keywords" content="折腾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鼠鬚管配置手記">
+<meta property="og:url" content="https://oyami-srk.github.io/2018/10/27/鼠鬚管配置手記/index.html">
+<meta property="og:site_name" content="空白酱的蒟蒻心得">
+<meta property="og:description" content="以下文字是用搜狗输入法完成输入的.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://oyami-srk.github.io/images/7FC4141A-9C66-4904-8D45-52C682956963.png">
+<meta property="og:updated_time" content="2018-10-31T15:32:18.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鼠鬚管配置手記">
+<meta name="twitter:description" content="以下文字是用搜狗输入法完成输入的.">
+<meta name="twitter:image" content="https://oyami-srk.github.io/images/7FC4141A-9C66-4904-8D45-52C682956963.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://oyami-srk.github.io/2018/10/27/鼠鬚管配置手記/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>鼠鬚管配置手記 | 空白酱的蒟蒻心得</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">空白酱的蒟蒻心得</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">在辣鸡的领域摸爬滚打</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2018/10/27/鼠鬚管配置手記/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shiroko">
+      <meta itemprop="description" content="一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空白酱的蒟蒻心得">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">鼠鬚管配置手記
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-27 21:55:00" itemprop="dateCreated datePublished" datetime="2018-10-27T21:55:00+08:00">2018-10-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-31 23:32:18" itemprop="dateModified" datetime="2018-10-31T23:32:18+08:00">2018-10-31</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>以下文字是用搜狗输入法完成输入的.<br><a id="more"></a></p>
+<h2 id="0xFF-篇头"><a href="#0xFF-篇头" class="headerlink" title="0xFF 篇头"></a>0xFF 篇头</h2><p>几年前我就尝试过使用鼠须管, 但是配置着实麻烦, 而且尚且达不到自己的需求. 现在, 由于苦于iOS平台的搜狗输入法实在是男用的要命, 而且我也想换换口味. 这里吐槽一下, iOS和macOS上的双拼输入法都没有自然码, 而且iOS还<strong>不允许</strong>链接蓝牙键盘使用<strong>第三方</strong>输入法, 就十分尴尬…<br>好了, 言归正传, 鼠须管是一个自由度十分高的输入法引擎: <em>Rime</em>在macOS上的实现. 首先, 之所以叫她引擎而不是输入法, 是因为鼠须管给各种输入方式提供了一个<strong>平台</strong>, 在其上能够方便的自定义很多输入方式, 诸如<em>藏语输入法</em>, <em>注音输入法</em>, <em>阿拉伯语输入法</em>等等. 这个引擎, 通过用户的设置, 可以变得十分强大. 不过, 也正因为如此, 使其变得得心应手需要相当多的配置, 这点令很多人望而却步.<br>在我写这篇笔记的时候, 我也在一步一步配置着属于我的Rime, 所以我将用:<strong>目标 -&gt; 实现</strong>的方式来写这篇笔记.</p>
+<h2 id="0x01-如何配置鼠须管-RIME"><a href="#0x01-如何配置鼠须管-RIME" class="headerlink" title="0x01 如何配置鼠须管(RIME)?"></a>0x01 如何配置鼠须管(RIME)?</h2><p>鼠须管在macOS上的配置文件文件夹为<code>~/Library/Rime/</code>, 可以看到这个文件夹有着许多的<a href="http://yaml.org/" target="_blank" rel="noopener">YAML</a>格式的配置文件.<br><img src="/images/7FC4141A-9C66-4904-8D45-52C682956963.png" alt="7FC4141A-9C66-4904-8D45-52"><br>这些配置文件就是Rime的核心. 我们只需要编辑这些文件并且保存, 然后点击鼠须管当中的”重新部署”, 就能够让我们的配置生效. 不过要注意的是, YAML对缩进十分敏感, 所以务必确定配置中的缩进关系是正确的, 以防配置出错.</p>
+<h2 id="0x02-我想搞双拼"><a href="#0x02-我想搞双拼" class="headerlink" title="0x02 我想搞双拼!"></a>0x02 我想搞双拼!</h2><p>双拼是我的硬需求, 如此符合人类直觉的输入方式没有得到普及是中文输入群体的不幸. 自然, 我需要给我的输入法配置上一个顺手的双拼方案 - <strong>自然码</strong>. 好在Rime提供了详尽的<a href="https://rime.im/docs/" target="_blank" rel="noopener">说明文档</a>供我参考.<br>Rime发展到现在, 出现了一个十分方便的配置管理工具 - <a href="https://github.com/rime/plum" target="_blank" rel="noopener">东风破</a>, 我们用她来安装我们需要的双拼输入方案. 首先打开终端并且切换目录到你钟爱的文件夹, 在终端运行以下命令来安装她(以下命令将会在当前目录创建一个”plum”文件夹):<br><code>curl -fsSL https://git.io/rime-install | bash</code><br>由于”essay(八股文)”等仓库里面有词库大文件, 所以可能会卡在Unpacking阶段一段时间, 稍安勿躁.<br>然后我们可以使用<code>./plum/rime-install</code>来检查一下安装是否正确, 并且更新一下我们已经有的输入法方案配置.<br>最后, 我们利用<code>./plum/rime-install double-pinyin</code>来安装我们想要的双拼输入方案.<br>然后打开配置文件中的<code>default.custom.yaml</code>, 也就是说默认配置(自定义).<br>修改一下我们已经有的方案列表, 仅保留Luna拼音和我们新装的双拼(双拼放在前面):<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line"><span class="attr">  schema_list:</span></span><br><span class="line"><span class="attr">    - schema:</span> <span class="string">double_pinyin</span></span><br><span class="line"><span class="attr">    - schema:</span> <span class="string">luna_pinyin</span></span><br><span class="line"><span class="attr">    - schema:</span> <span class="string">emoji</span>  <span class="comment"># 若要启用emoji, 请用rime-install安装emoji</span></span><br></pre></td></tr></table></figure></p>
+<p>这种方式是无需更改默认配置的, 更新也不会被覆盖.<br>需要注意的是, 通过<code>brew</code>安装的鼠须管是会出现无法部署的问题(据悉是librime库的问题, 在最新的代码中已经修复), 所以遵循Github上的INSTALL.md来手动编译安装就不会出现问题了.<br>在输入法图标处选择鼠须管, 并且点击重新部署, 过了一会儿, 当显示部署成功的时候, 我们就能用双拼了!</p>
+<h2 id="0x03-我想用简体"><a href="#0x03-我想用简体" class="headerlink" title="0x03 我想用简体!"></a>0x03 我想用简体!</h2><p>Rime的作者<a href="https://github.com/lotem" target="_blank" rel="noopener">佛振</a>开发Rime是为了繁体和古汉语输入, 所以如果我们想要使用她作为日常输入法, 就必须调整成简体, 也就是中国大陆的使用习惯.<br>如果只是想简单用一下简体, 那么用<code>Ctrl+grave</code>打开方案选单, 进入”中/半/汉”菜单选择繁体到简体便可. 但是这种方法如果切换了输入法, 或者是在新开的窗口, 默认还是输入繁体. 好在开发者已经提供了一个简单设置默认状态的功能.<br>将以下内容写入<code>double_pinyin.custom.yaml</code>便可以实现默认状态的设置:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">patch:</span></span><br><span class="line"><span class="attr">  switches:</span>                   <span class="comment"># 注意缩进</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">ascii_mode</span></span><br><span class="line"><span class="attr">      reset:</span> <span class="number">0</span>                <span class="comment"># reset 0 的作用是当从其他输入法切换到本输入法重设为指定状态</span></span><br><span class="line"><span class="attr">      states:</span> <span class="string">[</span> <span class="string">中文,</span> <span class="string">西文</span> <span class="string">]</span>   <span class="comment"># 选择输入方案后通常需要立即输入中文，故重设 ascii_mode = 0</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">full_shape</span></span><br><span class="line"><span class="attr">      states:</span> <span class="string">[</span> <span class="string">半角,</span> <span class="string">全角</span> <span class="string">]</span>   <span class="comment"># 而全／半角则可沿用之前方案的用法。</span></span><br><span class="line"><span class="attr">    - name:</span> <span class="string">simplification</span></span><br><span class="line"><span class="attr">      reset:</span> <span class="number">1</span>                <span class="comment"># 增加这一行：默认启用「繁→簡」转换。</span></span><br><span class="line"><span class="attr">      states:</span> <span class="string">[</span> <span class="string">漢字,</span> <span class="string">汉字</span> <span class="string">]</span></span><br></pre></td></tr></table></figure></p>
+<p>然后重新部署. 我们就能够开心的使用简体输入啦!</p>
+<h2 id="0x04-我想搞美化！"><a href="#0x04-我想搞美化！" class="headerlink" title="0x04 我想搞美化！"></a>0x04 我想搞美化！</h2><p>如果细心的读者可能发现这里我们用了全角输入，这代表以下文字是用rime输入的了！<br>搞好了简体，搞好了双拼，其实我们就差美化了！看着顺眼才是最重要的（才不是）。<br>首先，我们需要从鼠须管源码中的<code>data</code>文件夹中复制<code>squrriel.yaml</code>到我们的配置目录，也就是鼠须管本体的配置文件。然后修改style下的color_scheme为自己想要的主题，也就是<code>preset_color_schemes</code>下保存的预设颜色配置。<br>我选择了<code>apathy</code>感觉已经十分好看了。<br>然后按照我日常的习惯把候选词的数量从默认的<code>5</code>调整到<code>9</code>：<br>在<code>default.custom.yaml</code>中添加patch:menu/page_size:9就可以啦！</p>
+<h2 id="0x05-我想用辅码！"><a href="#0x05-我想用辅码！" class="headerlink" title="0x05 我想用辅码！"></a>0x05 我想用辅码！</h2><p>自然码为了减少重码，提供了一套辅助码机制，虽然年久失修，不过聊胜于无。让我们加上这个。<br>好的，现在还没有好用的辅助码，我们继续。</p>
+<h2 id="0x06-我要输英语！"><a href="#0x06-我要输英语！" class="headerlink" title="0x06 我要输英语！"></a>0x06 我要输英语！</h2><p>既然Rime有中文输入方案和词典，那么自然就有英文的！<br>只要下载easy_en方案到Rime配置文件夹下然后，然后启用easy_en方案就可以啦！<br><a href="/images/easy_en.zip">easy_en.zip</a></p>
+<h2 id="0x07-我要混着来！"><a href="#0x07-我要混着来！" class="headerlink" title="0x07 我要混着来！"></a>0x07 我要混着来！</h2><p>Rime是一个优秀的中文输入引擎，默认的中文输入方案并没有提供对英文的良好支持。但是实际应用中，我们经常需要在中文输入模式下输入一些英文单词。而切换模式往往显得比较繁琐；这种时候，我们就可以利用Rime自定义的词典了！<br>好的，现在还没找到合适的词典，我们继续。</p>
+<h2 id="0x08-我要用词库！"><a href="#0x08-我要用词库！" class="headerlink" title="0x08 我要用词库！"></a>0x08 我要用词库！</h2><p>前文已经提到，Rime对自定义输入法支持十分优秀。一个输入法的核心，除了输入算法之外，就是词库了。之所以搜狗现在独霸江山，就是因为搜狗的词库十分优秀。如果我们能在Rime里用搜狗的词库该多好啊。<br>万幸的是，尽管搜狗不提供原始词库，但是网上有大神已经开发出了词库转换工具。<br>首先要说明的是：词库转换工具——<a href="https://github.com/studyzy/imewlconverter" target="_blank" rel="noopener">深蓝词库转换</a>是Windows工具，mac上是无法使用的。<br>如果你只需要用搜狗标准词库，那么可以使用我提供的转换好的文本文档：<a href="/images/sougou.txt">点我下载</a><br>如果你需要用你自己的搜狗用户词库（从macOS版搜狗输入法导出用户词库为bin格式的文件），那么就需要找一个Windows电脑了。<br>首先从Release界面下载最新的词库转换工具：<a href="https://github.com/studyzy/imewlconverter/releases" target="_blank" rel="noopener">Release界面</a>，然后打开，点击高级设置→简繁体转换设置，设置简繁体转换为系统默认（此举意为让繁体和简体输入皆正常，Rime的简体是通过繁体转换来的）。然后选择词库（搜狗标准词库.secl），”-&gt;&gt;“后面选择Rime中州韵。<br>点击转换，保存得到的txt文件。同理，将bin格式的用户词库也通过这种方法转换。<br>我们就得到了原始的词库文本文档。<br>将以下代码（来自<a href="https://gist.github.com/lotem/5464868" target="_blank" rel="noopener">佛振的Gist</a>）保存到Rime文件夹下的<code>rime_dict_manager</code>文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># put this script in ~/Library/Rime, list existing user dictionaries:</span></span><br><span class="line"><span class="comment"># ./rime_dict_manager --list</span></span><br><span class="line"><span class="comment"># see other supported options:</span></span><br><span class="line"><span class="comment"># ./rime_dict_manager</span></span><br><span class="line"></span><br><span class="line">DYLD_LIBRARY_PATH=<span class="string">"/Library/Input Methods/Squirrel.app/Contents/Frameworks"</span> <span class="string">"/Library/Input Methods/Squirrel.app/Contents/MacOS/rime_dict_manager"</span> <span class="variable">$@</span></span><br></pre></td></tr></table></figure></p>
+<p>然后在终端（已经切换目录到Rime文件夹）输入：<code>chmod a+x ./rime_dict_manager</code><br>然后运行一下<code>./rime_dict_manager</code>查看是否正常，如果正常，可以用：<code>./rime_dict_manager -i luna_pinyin 你词库文本文档的路径（可以用鼠标拖过去）</code><br>等待显示导入成功之后，我们重新部署，就可以使用搜狗词库啦！</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/折腾/" rel="tag"># 折腾</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/21/关于博客暂时停机的声明/" rel="next" title="关于博客暂时停机的声明">
+                <i class="fa fa-chevron-left"></i> 关于博客暂时停机的声明
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Shiroko</p>
+              <p class="site-description motion-element" itemprop="description">一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0xFF-篇头"><span class="nav-number">1.</span> <span class="nav-text">0xFF 篇头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-如何配置鼠须管-RIME"><span class="nav-number">2.</span> <span class="nav-text">0x01 如何配置鼠须管(RIME)?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-我想搞双拼"><span class="nav-number">3.</span> <span class="nav-text">0x02 我想搞双拼!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-我想用简体"><span class="nav-number">4.</span> <span class="nav-text">0x03 我想用简体!</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-我想搞美化！"><span class="nav-number">5.</span> <span class="nav-text">0x04 我想搞美化！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05-我想用辅码！"><span class="nav-number">6.</span> <span class="nav-text">0x05 我想用辅码！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06-我要输英语！"><span class="nav-number">7.</span> <span class="nav-text">0x06 我要输英语！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x07-我要混着来！"><span class="nav-number">8.</span> <span class="nav-text">0x07 我要混着来！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x08-我要用词库！"><span class="nav-number">9.</span> <span class="nav-text">0x08 我要用词库！</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"> &copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shiroko</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
