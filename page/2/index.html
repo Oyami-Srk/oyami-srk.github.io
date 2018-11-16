@@ -287,6 +287,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2018/05/07/文章内嵌JS解释器测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shiroko">
+      <meta itemprop="description" content="一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空白酱的蒟蒻心得">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/07/文章内嵌JS解释器测试/" itemprop="url">
+                  文章内嵌JS解释器测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-07 22:40:00" itemprop="dateCreated datePublished" datetime="2018-05-07T22:40:00+08:00">2018-05-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-26 20:49:51" itemprop="dateModified" datetime="2018-10-26T20:49:51+08:00">2018-10-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小型项目/" itemprop="url" rel="index"><span itemprop="name">小型项目</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div id="run-code" style="width:400px;padding:10px;height:250px;"><br>        <textarea id="run-code-code" style="width:100%;"></textarea><br>        <br><br>        <textarea id="run-code-res" style="width:100%;"></textarea><br>        <br><br>        <button id="run-code-run" onclick="runcode=function() {
+            var clear_log = function () {
+                document.getElementById('run-code-res').value = '';
+            };
+            var log = function (v, e = '\n') {
+                var res = document.getElementById('run-code-res');
+                res.value += v + e;
+                return v;
+            };
+            clear_log();
+            var code = document.getElementById('run-code-code').value;
+            var backup = console.log;
+            console.log = log;
+            var ret = eval(code);
+            log('--------------------\nreturn value: ', '');
+            log(ret);
+            console.log = backup;
+        };
+        runcode()">Run code</button><br>    </div>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2018/05/06/Lambda初级简介---λ演算基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1817,182 +2005,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2017/07/27/[OI基础]数据结构与算法---树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shiroko">
-      <meta itemprop="description" content="一个什么都写的博客, 由Shiroko (Oyami Koroto)倾情奉献~">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="空白酱的蒟蒻心得">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/27/[OI基础]数据结构与算法---树/" itemprop="url">
-                  [OI 基础] 数据结构与算法 - 树
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-07-27 15:10:43" itemprop="dateCreated datePublished" datetime="2017-07-27T15:10:43+08:00">2017-07-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-31 23:25:35" itemprop="dateModified" datetime="2018-10-31T23:25:35+08:00">2018-10-31</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NOIP/" itemprop="url" rel="index"><span itemprop="name">NOIP</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="数据结构与算法-树-Day2"><a href="#数据结构与算法-树-Day2" class="headerlink" title="数据结构与算法 - 树(Day2)"></a>数据结构与算法 - 树(Day2)</h1><p><em>子又生孙, 孙又生子, 子子孙孙无穷尽也.</em></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/07/27/[OI基础]数据结构与算法---树/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-         
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2040,7 +2052,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
