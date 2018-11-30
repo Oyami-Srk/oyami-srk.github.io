@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="Run code">
-<meta name="keywords" content="shiroko 空白 博客 blog oyami koroto 技术 算法">
+  <meta name="description" content="Don’t panic, Everything is copied from xv6!">
+<meta name="keywords" content="编程,学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="文章内嵌JS解释器测试">
-<meta property="og:url" content="https://oyami-srk.github.io/2018/05/07/文章内嵌JS解释器测试/index.html">
+<meta property="og:title" content="从xv6开始的操作系统之旅-0">
+<meta property="og:url" content="https://oyami-srk.github.io/2018/11/30/从xv6开始的操作系统之旅-0/index.html">
 <meta property="og:site_name" content="空白酱的蒟蒻心得">
-<meta property="og:description" content="Run code">
+<meta property="og:description" content="Don’t panic, Everything is copied from xv6!">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-26T12:49:51.512Z">
+<meta property="og:updated_time" content="2018-11-30T15:21:26.641Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="文章内嵌JS解释器测试">
-<meta name="twitter:description" content="Run code">
+<meta name="twitter:title" content="从xv6开始的操作系统之旅-0">
+<meta name="twitter:description" content="Don’t panic, Everything is copied from xv6!">
 
 
 
 
 
 
-  <link rel="canonical" href="https://oyami-srk.github.io/2018/05/07/文章内嵌JS解释器测试/"/>
+  <link rel="canonical" href="https://oyami-srk.github.io/2018/11/30/从xv6开始的操作系统之旅-0/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>文章内嵌JS解释器测试 | 空白酱的蒟蒻心得</title>
+  <title>从xv6开始的操作系统之旅-0 | 空白酱的蒟蒻心得</title>
   
 
 
@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2018/05/07/文章内嵌JS解释器测试/">
+    <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2018/11/30/从xv6开始的操作系统之旅-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shiroko">
@@ -304,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">文章内嵌JS解释器测试
+          <h1 class="post-title" itemprop="name headline">从xv6开始的操作系统之旅-0
               
             
           </h1>
@@ -329,24 +329,12 @@
                 
               
 
-              <time title="创建时间：2018-05-07 22:40:00" itemprop="dateCreated datePublished" datetime="2018-05-07T22:40:00+08:00">2018-05-07</time>
+              <time title="创建时间：2018-11-30 23:06:43 / 修改时间：23:21:26" itemprop="dateCreated datePublished" datetime="2018-11-30T23:06:43+08:00">2018-11-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-26 20:49:51" itemprop="dateModified" datetime="2018-10-26T20:49:51+08:00">2018-10-26</time>
               
             
           </span>
@@ -363,7 +351,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小型项目/" itemprop="url" rel="index"><span itemprop="name">小型项目</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
 
                 
                 
@@ -397,25 +385,18 @@
       
 
       
-        <div id="run-code" style="width:400px;padding:10px;height:250px;"><br>        <textarea id="run-code-code" style="width:100%;"></textarea><br>        <br><br>        <textarea id="run-code-res" style="width:100%;"></textarea><br>        <br><br>        <button id="run-code-run" onclick="runcode=function() {
-            var clear_log = function () {
-                document.getElementById('run-code-res').value = '';
-            };
-            var log = function (v, e = '\n') {
-                var res = document.getElementById('run-code-res');
-                res.value += v + e;
-                return v;
-            };
-            clear_log();
-            var code = document.getElementById('run-code-code').value;
-            var backup = console.log;
-            console.log = log;
-            var ret = eval(code);
-            log('--------------------\nreturn value: ', '');
-            log(ret);
-            console.log = backup;
-        };
-        runcode()">Run code</button><br>    </div>
+        <p>Don’t panic, Everything is copied from xv6!<br><a id="more"></a></p>
+<p>操作系统一直被 <em><del>咱</del></em> 视为程序员的三大浪漫。本人也从初中开始便一直向往这个领域，初一的时候便早早学习了汇编（粗糙的）；不过人生苦短，我因为各种事情没能按下心来仔细学习操作系统，好在到了高中终于想起了初心（初心一直没忘）。开始学习操作系统的相关知识和技术。</p>
+<p>首先让我来解释一下标题，标题看似和xv6有关，其实本系列文章和xv6这个教学用操作系统并无直接的关系，无非就是利用她的部分代码（程序员的事情怎么能说是偷呢，这是merge code）。</p>
+<p>xv6是一个众所周知的由MIT提供的类Unix的教学用实现，其利用短短不到一万行代码实现了一个完整的操作系统内核，注释详细结构清晰，是初学者的不二选择（咳咳）。我之所以选择xv6的原因，是其他操作系统内核的代码我都看不懂（捂脸）～</p>
+<p>我将一步步实现一个简单的玩具系统内核，用来学习操作系统的相关知识，这个系列主要分为两部分：</p>
+<ul>
+<li>主要部分：实现一个简单的玩具内核的文章</li>
+<li>资料部分：汇编整理网络上我查阅的资料</li>
+</ul>
+<p>这两个部分将时不时更新，主要部分通过数字编码区别先后顺序，资料部分不做任何区分。目标是建立一个wiki（osdev wiki的翻译）。</p>
+<p>让我从这里开始吧，鞭策自己也好给自己一个动力。</p>
+<p>Good Luck</p>
 
       
     </div>
@@ -434,6 +415,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag"># 编程</a>
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+        </div>
+      
 
       
       
@@ -443,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/06/Lambda初级简介---λ演算基础/" rel="next" title="Lambda初级简介 - λ演算基础">
-                <i class="fa fa-chevron-left"></i> Lambda初级简介 - λ演算基础
+              <a href="/2018/11/16/计算机考古学瞎吹/" rel="next" title="计算机考古学瞎吹">
+                <i class="fa fa-chevron-left"></i> 计算机考古学瞎吹
               </a>
             
           </div>
@@ -452,10 +441,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/10/Lambda初级简介---邱奇数/" rel="prev" title="Lambda初级简介 - 邱奇数">
-                Lambda初级简介 - 邱奇数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
