@@ -108,25 +108,27 @@
 
 
 
-  <meta name="description" content="简单易懂的现代魔法">
-<meta name="keywords" content="数理逻辑,信息学">
+  <meta name="description" content="一切都起源自这里：0x7c00">
+<meta name="keywords" content="编程,学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lambda初级简介 - 组合子演算">
-<meta property="og:url" content="https://oyami-srk.github.io/2018/05/16/Lambda初级简介---组合子演算/index.html">
+<meta property="og:title" content="「1」Boot与启动">
+<meta property="og:url" content="https://oyami-srk.github.io/2018/12/01/「1」Boot与启动/index.html">
 <meta property="og:site_name" content="空白酱的蒟蒻心得">
-<meta property="og:description" content="简单易懂的现代魔法">
+<meta property="og:description" content="一切都起源自这里：0x7c00">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-26T12:57:45.853Z">
+<meta property="og:image" content="https://oyami-srk.github.io/images/15446247485787.jpg">
+<meta property="og:updated_time" content="2018-12-12T14:28:03.674Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lambda初级简介 - 组合子演算">
-<meta name="twitter:description" content="简单易懂的现代魔法">
+<meta name="twitter:title" content="「1」Boot与启动">
+<meta name="twitter:description" content="一切都起源自这里：0x7c00">
+<meta name="twitter:image" content="https://oyami-srk.github.io/images/15446247485787.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="https://oyami-srk.github.io/2018/05/16/Lambda初级简介---组合子演算/"/>
+  <link rel="canonical" href="https://oyami-srk.github.io/2018/12/01/「1」Boot与启动/"/>
 
 
 
@@ -136,7 +138,7 @@
   };
 </script>
 
-  <title>Lambda初级简介 - 组合子演算 | 空白酱的蒟蒻心得</title>
+  <title>「1」Boot与启动 | 空白酱的蒟蒻心得</title>
   
 
 
@@ -287,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2018/05/16/Lambda初级简介---组合子演算/">
+    <link itemprop="mainEntityOfPage" href="https://oyami-srk.github.io/2018/12/01/「1」Boot与启动/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shiroko">
@@ -304,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Lambda初级简介 - 组合子演算
+          <h1 class="post-title" itemprop="name headline">「1」Boot与启动
               
             
           </h1>
@@ -329,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2018-05-16 22:04:26" itemprop="dateCreated datePublished" datetime="2018-05-16T22:04:26+08:00">2018-05-16</time>
+              <time title="创建时间：2018-12-01 13:41:07" itemprop="dateCreated datePublished" datetime="2018-12-01T13:41:07+08:00">2018-12-01</time>
             
 
             
@@ -346,7 +348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-26 20:57:45" itemprop="dateModified" datetime="2018-10-26T20:57:45+08:00">2018-10-26</time>
+                <time title="修改时间：2018-12-12 22:28:03" itemprop="dateModified" datetime="2018-12-12T22:28:03+08:00">2018-12-12</time>
               
             
           </span>
@@ -363,7 +365,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数理逻辑/" itemprop="url" rel="index"><span itemprop="name">数理逻辑</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
 
                 
                 
@@ -397,45 +399,46 @@
       
 
       
-        <p>简单易懂的现代魔法</p>
-<a id="more"></a>
+        <p>一切都起源自这里：0x7c00<br><a id="more"></a></p>
 <blockquote>
-<p>抽象函数的固定模型，固定模型的计算系统</p>
+<p>你知道当你按下开机按钮的时候，都发生了什么吗？<br>你知道当你看到显示器显示之前，都发生了什么吗？<br>你知道当你准备使用操作系统前，都发生了什么吗？</p>
 </blockquote>
-<p>​    上次我们介绍了Y组合子和Z组合子，那么可能有人想要问了，有没有其他的组合子呢？当然有，根据维基百科介绍，目前普遍接受的λ组合子有：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">I := λx.x</span><br><span class="line">K := λx.λy.x</span><br><span class="line">S := λx.λy.λz.x z (y z)</span><br><span class="line">B := λx.λy.λz.x (y z)</span><br><span class="line">C := λx.λy.λz.x z y</span><br><span class="line">W := λx.λy.x y y</span><br><span class="line">U := λx.λy.y (x x y)</span><br><span class="line">ω := λx.x x</span><br><span class="line">Ω := ω ω</span><br><span class="line">Y := λg.(λx.g (x x)) (λx.g (x x))</span><br></pre></td></tr></table></figure>
-<p>​    可以看到，ω组合子正式我们在上篇推导Y组合子的中间产物。不过我们这节要介绍的组合子演算，是由<strong>S</strong>、<strong>K</strong>、<strong>I</strong>组成的演算系统。其他组合子不在初级简介的范畴内。SKI演算系统，有时候称为SK基演算，这是因为用S、K可以做到和I一样的效果，两者是外延相等（注意外延相等不等于函数自身相同，使用等价一词以区分项相同使用的相等）。用S、K表达I的方法是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">((S K K) x)</span><br><span class="line">((λz.K z(K z)) x)	# 根据定义</span><br><span class="line">(K x (K x))			# 应用x</span><br><span class="line">(K x)				# 根据定义</span><br><span class="line">x					# ((S K K) x) = x</span><br><span class="line">I x					# = I x</span><br><span class="line"># 所以对于任意项x, ((S K K) x) = I x</span><br><span class="line"># 所以(S K K)和I外延性等价</span><br></pre></td></tr></table></figure>
-<p>​    S和K的定义都十分简单，但是证明表示，是用S、K可以组合成<strong>任何</strong>λ项！这就是说消除了λ演算里面函数定义的抽象过程，可以完全使用固定模型来表示任何函数！因为S、K组合子可以组合成任何λ项，λ演算可以计算任何可计算问题，所以，SKI演算系统是图灵完全的！拥有和λ演算等价的计算能力。</p>
-<p>​    SKI演算系统（下文简称CC系统，Combinator Calculus，组合子演算）显然和λ演算息息相关，所以自然有将任意λ表达式转换成组合子表达式的方法。对于这种转换，我们定义一个变换函数T，T的定义如下（V为变量，E为项）：</p>
-<ol>
-<li><p><code>T[V] =&gt; V</code></p>
-</li>
-<li><p><code>T[ (E1 E2) ] =&gt; ( T[E1]  T[E2] )</code></p>
-</li>
-<li><p><code>T[λx.E] =&gt; (K T[E] )</code>        … 如果x在E中<strong>没有</strong>自由出现</p>
-</li>
-<li><p><code>T[λx.x] =&gt; I</code></p>
-</li>
-<li><p><code>T[λx.λy.E] =&gt; T[λx.T[λy.E]]</code>        … 如果x在E中自由出现</p>
-</li>
-<li><p><code>T[λx.(E1 E2)] =&gt; (S T[λx.E1] T[λx.E2])</code></p>
-<p>利用这六个变换规则，我们就可以将λ表达式转换成组合子表达式，也就是通常说的，消除函数抽象。前四个规则是相当显然的。第五个规则则是表达如果x在E中自由出现时，x无法被立即转换消除掉，所以先转换其主体，然后利用规则6最终消除抽象。在规则6里，<code>λx.(E1 E2)</code>是一个接受一个参数并应用到E1 E2上，即等于<code>(E1 E2)[x:=v]</code>，据此可推导：</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">λx.(E1 E2) v</span><br><span class="line">(E1 E2)[x:=v]			# 应用v</span><br><span class="line">(E1[x:=v])(E2[x:=v])	# 分别代换v到E1E2上</span><br><span class="line">((λx.E1 v)(λx.E2 v))	# 根据定义</span><br><span class="line">(S λx.E1 λx.E2 v)		# S的定义</span><br><span class="line">((S λx.E1 λx.E2) v)		# 抽出v</span><br><span class="line"># 所以可得λx.E1 E2 等价于 S(λx.E1 λx.E2)</span><br><span class="line"># 进而得出等价于(S T[λx.E1] T[λx.E2])</span><br></pre></td></tr></table></figure>
-<p>​    如果接受η-变换的话，变换函数可以根据外延性定理增加一条：</p>
-<ol start="7">
-<li><p>T[λx.E x] = T[E]      … 如果x在E中没有自由出现</p>
-<p>我们也很容易接受一个函数：接受x并应用x于函数E，等价于函数E本身这种关系。</p>
-<p>这就是我要介绍的组合子演算的内容，现在用一次转换和应用来表演一下学到的新东西：</p>
-</li>
-</ol>
-<p>​    转化<code>λx y.(y x)</code>到组合子表达式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">T[λx y.(y x)]</span><br><span class="line">T[λx.λy.(y x)]</span><br><span class="line">T[λx.T[λy.(y x)]]				# rule 5</span><br><span class="line">T[λx.(S T[λy.y] T[λy.x])]		# rule 6</span><br><span class="line">T[λx.(S I T[λy.x])]				# rule 4</span><br><span class="line">T[λx.(S I (K x))]				# rule 3</span><br><span class="line">(S T[λx.(S I)] T[λx.(K x)])		# rule 6</span><br><span class="line">(S (K (S I)) T[λx.(K x)])		# rule 3</span><br><span class="line">(S (K (S I)) K)		# rule 7!</span><br></pre></td></tr></table></figure>
-<p>​    对于这个结果，我们可以验证：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(S (K (S I)) K)	x y</span><br><span class="line">((K (S I)) x (K x)) y</span><br><span class="line">(S I (K x)) y</span><br><span class="line">(I y (K x y) )</span><br><span class="line">(y (K x y))</span><br><span class="line">(y x)</span><br></pre></td></tr></table></figure>
-<p>​    完美！那么，这一系列就到此结束了！</p>
+<p>Boot，我们用这个单词来形容计算机启动的一系列操作，也就是Bootstrap的缩写。Bootstrap，意思是“通过拔自己的靴带来拔起自己”，出自谚语抑或是童话（无考究）。之所以这样称呼计算机启动，是因为Boot程序的作用是启动计算机程序，而其又是计算机程序的一部分，自己启动自己，也就是Bootstrap。</p>
+<p>解释完Boot的含义，让我们来看看Boot是怎么进行的。</p>
+<p>不像计算机科学的其他领域，你在操作系统的设计和制作中，经常打交道的是历史遗留的糟糕设计。正如我说过的：「向前兼容拖了整个计算机产业的后腿」，往往一些仅仅适用当时的设计通过向前兼容这一种设计原则而保留下来。比如说至今我们开机仍然需要进入16位实模式，再进入32位保护模式，才能进入64位长模式、计算机开机时候仍然要打开A20地址线，也就是通过IBM键盘控制的那条……当然，我们不能说向前兼容就是不好的设计原则，我们自然不能要求任何软件提供商都与时俱进更新他们的软件，也不能要求用户都无条件使用最新的软件。</p>
+<p>废话不多说，对于这种魔数般的内容，我们仅需要知其然便可。</p>
+<p>回归正题，来详细看看计算机是如何启动的：</p>
+<ul>
+<li>计算机上电，控制器自动读取主板上的BIOS到内存里的0xFE000，也就是A20地址线不开启状态下的最靠后的区域。</li>
+<li>读取完了BIOS之后跳转到0xFFFF0，距离0xFFFFF就只有一个jmp语句的距离。</li>
+<li>执行这个jmp语句，会跳转到BIOS程序的入口</li>
+<li>BIOS处理计算机的硬件，并且写入中断供其他程序使用</li>
+<li>BIOS读取启动硬盘的第一个扇区，也就是512字节大小的数据，到0x7c00处</li>
+<li>BIOS跳转到0x7c00，执行我们的引导扇区</li>
+<li>引导扇区加载Loader或者什么东西</li>
+<li>Loader或者什么东西正式开启保护模式并跳转入内核</li>
+<li>计算机完成启动</li>
+</ul>
+<p>上面通篇的东西基本上都是历史遗留设计，什么A20地址线，什么0x7c00，都是前人的设计，在这里我们不深究，基本上解释一下什么是A20地址线就行了：</p>
+<p>在32位CPU发明之后，地址线也被拓宽到32位，可是之前16位的时候我们只有20位地址线（为什么16位有20位地址线参考王爽老师的《汇编语言》）。为了保证向前兼容，也就是不让老的程序溢出到20位地址线能访问到的最高内存地址，我们聪明的IBM同学想到了一个聪明的主意：把第20位地址线的开关设置在键盘控制器上，当要使用更多的内存的时候，打开这个开关就可以了。这样子我们就可以保证兼容。当开关没有打开的时候，所有进位到第20位地址线都会变成0，这也就保证了地址空间和16位时一样。</p>
+<p>然后日新月异，我们现在有了三种方法开启A20地址线，当然我们以后会选用IBM键盘法，本质上都是一样的。</p>
+<p>然后了解了计算机的启动过程，我们已经具备了书写操作系统的第一个条件：知道如何下手。</p>
+<p>显然，BIOS程序是烧录在主板上的，我们无法更改；那我们只有一条路可以走了：写入我们的代码到启动硬盘的第一个扇区，512字节的空间。</p>
+<p>我们使用nasm作为我们的汇编器，她是一个十分好用的汇编器（起码比GAS好用）</p>
+<p>来看看我们的第一段代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">org 0x7c00</span><br><span class="line"></span><br><span class="line">mov ax, cs ; 初始化各种段地址</span><br><span class="line">mov es, ax</span><br><span class="line">mov ds, ax</span><br><span class="line">mov ax, msg ; 加载字符串地址</span><br><span class="line">mov bp, ax</span><br><span class="line">mov ax, 0x1300    ; 中断编号0x13, 显示页0</span><br><span class="line">mov bx, 0x0007    ; 颜色参数</span><br><span class="line">mov cx, len       ; 长度</span><br><span class="line">mov dx, 0         ; 位置参数</span><br><span class="line"></span><br><span class="line">int 0x10          ; 调用中断</span><br><span class="line"></span><br><span class="line">jmp $             ; 死循环</span><br><span class="line"></span><br><span class="line">msg db &quot;hello world&quot;</span><br><span class="line">len equ $ - msg</span><br><span class="line">times 510 - ($ - $$) db 0</span><br><span class="line">dw 0xAA55</span><br></pre></td></tr></table></figure></p>
+<p>利用nasm我们来编译这段代码（需要nasm工具，自己安装去吧～）：<code>nasm -f bin boot.asm -o boot.bin</code><br>然后再生成一个80MB大小的硬盘来供给我们的虚拟机（bximage命令来自下文介绍的bochs虚拟机）：<code>bximage -mode=create -hd=80M -q 80m.img</code><br>最后，把我们的引导扇区写入硬盘：<code>dd if=boot.bin of=80m.img seek=0 conv=notrunc</code><br>完成！</p>
+<p>我们现在有了一个可以启动的引导盘啦～</p>
+<p>当然，我们需要选择一个合适的虚拟机，我们总不能来回重启我们自己的电脑来调试，这样她会哭的。选用什么虚拟机呢？VMWare还是VBox——肯定都不行，因为这些虚拟机为了更快的虚拟作业系统，通常会采用许多高端的措施来进行虚拟过程，比如说硬件虚拟化之类的技术。我们需要的是一个更加底层、更加生硬（直接）的虚拟机，也就是完完整整模拟一个机器的那种 —— Bochs！</p>
+<p>Bochs提供了许多工具，也可以直接与gcc连接，相当多的调试指令，是操作系统开发者的不二选择（广告费请mail获得地址hh），上面创建硬盘的命令就是bochs提供的。</p>
+<p>安装Bochs的过程和安装nasm一样，按过不表。</p>
+<p>我们建立一个Bochs_img来作为我们的配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">megs: 256</span><br><span class="line">romimage: file=$BXSHARE/BIOS-bochs-latest</span><br><span class="line">vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest</span><br><span class="line">vga: extension=vbe, update_freq=15</span><br><span class="line">clock: sync=slowdown, time0=local</span><br><span class="line">mouse: enabled=0</span><br><span class="line">cpu: count=1, ips=5000000</span><br><span class="line">ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14</span><br><span class="line">ata0-master: type=disk, path=&quot;80m.img&quot;, mode=flat</span><br><span class="line">boot: disk</span><br></pre></td></tr></table></figure></p>
+<p>然后启动：<code>bochs -q -f bochsrc_img</code></p>
+<p>Boom？嗯，你需要在终端里输入c，也就是continue的意思才能开始运行。<br>Boom！这就是一个最小的操作系统。</p>
+<p><img src="/images/15446247485787.jpg" alt=""></p>
+<p>（看到左上角的hello world了没～）</p>
+<p>这就是我们的最初的20行代码，也是一切的开端（中二口气）。</p>
+<p>下一篇我们会来展示一下如何跳转入保护模式以及使用C语言。</p>
+<p>P.S. 为啥我咕咕咕了这么久，是因为咱一直有其他事情啦&gt;w&lt;</p>
 
       
     </div>
@@ -456,9 +459,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数理逻辑/" rel="tag"># 数理逻辑</a>
+            <a href="/tags/编程/" rel="tag"># 编程</a>
           
-            <a href="/tags/信息学/" rel="tag"># 信息学</a>
+            <a href="/tags/学习/" rel="tag"># 学习</a>
           
         </div>
       
@@ -471,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/14/Lambda初级简介---Y组合子/" rel="next" title="Lambda初级简介 - Y组合子">
-                <i class="fa fa-chevron-left"></i> Lambda初级简介 - Y组合子
+              <a href="/2018/11/30/从xv6开始的操作系统之旅-0/" rel="next" title="从xv6开始的操作系统之旅-0">
+                <i class="fa fa-chevron-left"></i> 从xv6开始的操作系统之旅-0
               </a>
             
           </div>
@@ -480,10 +483,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/17/[瞎想]人工智能漫谈/" rel="prev" title="[瞎想]人工智能漫谈">
-                [瞎想]人工智能漫谈 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
